@@ -1,0 +1,17 @@
+#! /bin/sh
+#
+# Created by configure
+
+"/home/dcslab/pxw/glusterfs-3.9.1/mtcp/apps/apache_benchmark/srclib/apr-util/configure" \
+"--disable-option-checking" \
+"--with-libmtcp=/home/dcslab/pxw/glusterfs-3.9.1/mtcp/mtcp/" \
+"--with-libdpdk=/home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/" \
+"--cache-file=/dev/null" \
+"--srcdir=/home/dcslab/pxw/glusterfs-3.9.1/mtcp/apps/apache_benchmark/srclib/apr-util" \
+"--with-apr=../apr" \
+"--prefix=/usr/local/apache2" \
+"--exec-prefix=/usr/local/apache2" \
+"--libdir=/usr/local/apache2/lib" \
+"--includedir=/usr/local/apache2/include" \
+"--bindir=/usr/local/apache2/bin" \
+"$@"
