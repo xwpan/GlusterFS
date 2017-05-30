@@ -1,0 +1,11 @@
+name.lo: name.c /usr/include/stdc-predef.h ../../../../config.h \
+ /home/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_config.h \
+ /home/pxw/glusterfs-3.9.1/mtcp/dpdk-16.11/x86_64-native-linuxapp-gcc/include/rte_config.h
+
+/usr/include/stdc-predef.h:
+
+../../../../config.h:
+
+/home/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_config.h:
+
+/home/pxw/glusterfs-3.9.1/mtcp/dpdk-16.11/x86_64-native-linuxapp-gcc/include/rte_config.h:

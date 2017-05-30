@@ -1,0 +1,1984 @@
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h: In function 'rte_memcpy':
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: implicit declaration of function '_mm_alignr_epi8' [-Werror=implicit-function-declaration]
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ether.h:50:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:186,
+                 from dpdk.c:18:
+../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_memcpy.h:814:2: error: incompatible type for argument 2 of '_mm_storeu_si128'
+  MOVEUNALIGNED_LEFT47(dst, src, n, srcofs);
+  ^
+In file included from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_common.h:298:0,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_interrupts.h:37,
+                 from ../../../../dpdk/x86_64-native-linuxapp-gcc/include/rte_ethdev.h:181,
+                 from dpdk.c:18:
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/emmintrin.h:700:1: note: expected '__m128i' but argument is of type 'int'
+ _mm_storeu_si128 (__m128i *__P, __m128i __B)
+ ^
+dpdk.c: In function 'port_init':
+dpdk.c:38:34: error: 'port_conf_default' undeclared (first use in this function)
+  struct rte_eth_conf port_conf = port_conf_default;
+                                  ^
+dpdk.c:38:34: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ../../../../libglusterfs/src/common-utils.h:39:0,
+                 from ../../../../libglusterfs/src/dict.h:18,
+                 from dpdk.c:1:
+dpdk.c:75:9: error: 'this' undeclared (first use in this function)
+  gf_log(this->name,GF_LOG_ERROR,"Port %u MAC: %02" PRIx8 " %02" PRIx8 " %02" PRIx8 " %02" PRIx8 " %02" PRIx8 " %02" PRIx8 "\n",
+         ^
+../../../../libglusterfs/src/logging.h:257:26: note: in definition of macro 'gf_log'
+                 _gf_log (dom, __FILE__, __FUNCTION__, __LINE__,         \
+                          ^
+dpdk.c: In function 'init':
+dpdk.c:151:8: error: array size missing in 'argv'
+  char *argv[];
+        ^
+dpdk.c: At top level:
+dpdk.c:90:1: warning: 'gf_dpdk_options_init' defined but not used [-Wunused-function]
+ gf_dpdk_options_init (rpc_transport_t *this)
+ ^
+dpdk.c:95:1: warning: 'gf_dpdk_init' defined but not used [-Wunused-function]
+ gf_dpdk_init (rpc_transport_t *this)  //init() 中调用
+ ^
+cc1: some warnings being treated as errors
+make[5]: *** [dpdk.lo] 错误 1
+make[4]: *** [all-recursive] 错误 1
+make[3]: *** [all-recursive] 错误 1
+make[2]: *** [all-recursive] 错误 1
+make[1]: *** [all-recursive] 错误 1
+make: *** [all] 错误 2

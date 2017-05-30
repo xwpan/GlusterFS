@@ -1,0 +1,2 @@
+file location : /home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/src/dpdk.conf
+num_cpus = 8, MAX_CPUS = 16

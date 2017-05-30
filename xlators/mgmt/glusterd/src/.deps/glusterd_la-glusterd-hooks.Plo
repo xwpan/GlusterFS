@@ -1,0 +1,687 @@
+glusterd_la-glusterd-hooks.lo: glusterd-hooks.c \
+ /usr/include/stdc-predef.h ../../../../config.h \
+ ../../../../libglusterfs/src/globals.h \
+ ../../../../libglusterfs/src/xlator.h /usr/include/stdio.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/inttypes.h \
+ ../../../../libglusterfs/src/event-history.h \
+ ../../../../libglusterfs/src/mem-types.h \
+ ../../../../libglusterfs/src/circ-buff.h \
+ ../../../../libglusterfs/src/common-utils.h \
+ /usr/include/x86_64-linux-gnu/sys/uio.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/time.h \
+ /usr/include/endian.h /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/sigset.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
+ /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
+ /usr/include/x86_64-linux-gnu/bits/uio.h /usr/include/netdb.h \
+ /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+ /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+ /usr/include/x86_64-linux-gnu/asm/socket.h \
+ /usr/include/asm-generic/socket.h \
+ /usr/include/x86_64-linux-gnu/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/x86_64-linux-gnu/bits/socket2.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/rpc/netdb.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo.h \
+ /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/xlocale.h \
+ /usr/include/alloca.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string2.h \
+ /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/assert.h \
+ /usr/include/pthread.h /usr/include/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h /usr/include/openssl/md5.h \
+ /usr/include/openssl/e_os2.h \
+ /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h /usr/include/fnmatch.h \
+ ../../../../libglusterfs/src/logging.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ ../../../../libglusterfs/src/list.h \
+ ../../../../libglusterfs/src/glusterfs.h \
+ /usr/include/x86_64-linux-gnu/sys/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/sys/statvfs.h \
+ /usr/include/x86_64-linux-gnu/bits/statvfs.h /usr/include/errno.h \
+ /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/dirent.h /usr/include/x86_64-linux-gnu/bits/dirent.h \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl2.h /usr/include/arpa/inet.h \
+ /usr/include/x86_64-linux-gnu/sys/poll.h \
+ /usr/include/x86_64-linux-gnu/bits/poll.h \
+ /usr/include/x86_64-linux-gnu/bits/poll2.h \
+ ../../../../libglusterfs/src/glusterfs-fops.h \
+ ../../../../libglusterfs/src/compat.h \
+ /usr/include/x86_64-linux-gnu/sys/un.h \
+ /usr/include/x86_64-linux-gnu/sys/xattr.h /usr/include/linux/xattr.h \
+ /usr/include/linux/libc-compat.h /usr/include/linux/falloc.h \
+ /usr/include/argp.h /usr/include/ctype.h /usr/include/rpc/rpc.h \
+ /usr/include/rpc/types.h /usr/include/x86_64-linux-gnu/sys/param.h \
+ /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
+ /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+ /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+ /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+ /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+ /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+ /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
+ /usr/include/x86_64-linux-gnu/asm/param.h \
+ /usr/include/asm-generic/param.h /usr/include/rpc/xdr.h \
+ /usr/include/rpc/auth.h /usr/include/rpc/clnt.h \
+ /usr/include/rpc/rpc_msg.h /usr/include/rpc/auth_unix.h \
+ /usr/include/rpc/auth_des.h /usr/include/rpc/svc.h \
+ /usr/include/rpc/svc_auth.h ../../../../libglusterfs/src/locking.h \
+ ../../../../libglusterfs/src/lkowner.h \
+ ../../../../libglusterfs/src/compat-uuid.h /usr/include/uuid/uuid.h \
+ ../../../../libglusterfs/src/mem-pool.h \
+ ../../../../libglusterfs/src/iatt.h \
+ ../../../../libglusterfs/src/libglusterfs-messages.h \
+ ../../../../libglusterfs/src/glfs-message-id.h \
+ ../../../../libglusterfs/src/dict.h \
+ ../../../../libglusterfs/src/latency.h \
+ ../../../../libglusterfs/src/gf-dirent.h \
+ ../../../../libglusterfs/src/inode.h ../../../../libglusterfs/src/fd.h \
+ ../../../../libglusterfs/src/fd-lk.h \
+ ../../../../libglusterfs/src/stack.h \
+ ../../../../libglusterfs/src/globals.h \
+ ../../../../libglusterfs/src/client_t.h \
+ ../../../../libglusterfs/src/iobuf.h \
+ /usr/include/x86_64-linux-gnu/sys/mman.h \
+ /usr/include/x86_64-linux-gnu/bits/mman.h \
+ /usr/include/x86_64-linux-gnu/bits/mman-linux.h \
+ ../../../../libglusterfs/src/options.h \
+ ../../../../libglusterfs/src/glusterfs.h \
+ ../../../../libglusterfs/src/dict.h \
+ ../../../../libglusterfs/src/xlator.h \
+ ../../../../libglusterfs/src/logging.h \
+ ../../../../libglusterfs/src/run.h \
+ ../../../../libglusterfs/src/defaults.h \
+ ../../../../libglusterfs/src/syscall.h \
+ ../../../../libglusterfs/src/compat.h \
+ ../../../../libglusterfs/src/compat-errno.h glusterd.h \
+ /usr/include/libgen.h ../../../../libglusterfs/src/compat-uuid.h \
+ ../../../../rpc/rpc-lib/src/rpc-clnt.h \
+ ../../../../libglusterfs/src/stack.h \
+ ../../../../rpc/rpc-lib/src/rpc-transport.h \
+ ../../../../rpc/rpc-lib/src/rpcsvc-common.h \
+ ../../../../libglusterfs/src/list.h ../../../../libglusterfs/src/timer.h \
+ ../../../../rpc/rpc-lib/src/xdr-common.h \
+ ../../../../libglusterfs/src/call-stub.h \
+ ../../../../libglusterfs/src/defaults.h \
+ ../../../../libglusterfs/src/default-args.h \
+ ../../../../libglusterfs/src/fd.h \
+ ../../../../libglusterfs/src/byte-order.h glusterd-mem-types.h \
+ ../../../../libglusterfs/src/mem-types.h \
+ ../../../../rpc/rpc-lib/src/rpcsvc.h \
+ ../../../../libglusterfs/src/event.h \
+ ../../../../libglusterfs/src/mem-pool.h \
+ ../../../../libglusterfs/src/iobuf.h \
+ ../../../../rpc/rpc-lib/src/xdr-rpc.h glusterd-sm.h \
+ ../../../../libglusterfs/src/store.h glusterd-rcu.h \
+ /usr/include/x86_64-linux-gnu/urcu-bp.h \
+ /usr/include/x86_64-linux-gnu/urcu/map/urcu-bp.h \
+ /usr/include/x86_64-linux-gnu/urcu-pointer.h \
+ /usr/include/x86_64-linux-gnu/urcu/compiler.h \
+ /usr/include/x86_64-linux-gnu/urcu/arch.h \
+ /usr/include/x86_64-linux-gnu/urcu/config.h \
+ /usr/include/x86_64-linux-gnu/urcu/syscall-compat.h \
+ /usr/include/x86_64-linux-gnu/urcu/arch/generic.h \
+ /usr/include/x86_64-linux-gnu/urcu/uatomic.h \
+ /usr/include/x86_64-linux-gnu/urcu/system.h \
+ /usr/include/x86_64-linux-gnu/urcu/uatomic/generic.h \
+ /usr/include/x86_64-linux-gnu/urcu-call-rcu.h \
+ /usr/include/x86_64-linux-gnu/urcu/wfcqueue.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdbool.h \
+ /usr/include/x86_64-linux-gnu/urcu-defer.h \
+ /usr/include/x86_64-linux-gnu/urcu-flavor.h \
+ /usr/include/x86_64-linux-gnu/urcu/rculist.h \
+ /usr/include/x86_64-linux-gnu/urcu/list.h glusterd-snapd-svc.h \
+ glusterd-svc-mgmt.h glusterd-proc-mgmt.h glusterd-conn-mgmt.h \
+ glusterd-bitd-svc.h ../../../../rpc/xdr/src/glusterd1-xdr.h \
+ ../../../../rpc/rpc-lib/src/protocol-common.h glusterd-pmap.h \
+ ../../../../libglusterfs/src/cli1-xdr.h \
+ ../../../../libglusterfs/src/syncop.h /usr/include/ucontext.h \
+ ../../../../libglusterfs/src/events.h \
+ ../../../../libglusterfs/src/eventtypes.h glusterd-op-sm.h \
+ glusterd-hooks.h glusterd-utils.h \
+ ../../../../rpc/xdr/src/glusterfs3-xdr.h \
+ ../../../../rpc/xdr/src/rpc-common-xdr.h \
+ ../../../../rpc/rpc-lib/src/xdr-common.h \
+ ../../../../rpc/xdr/src/glusterfs-fops.h glusterd-peer-utils.h \
+ glusterd-store.h glusterd-messages.h \
+ ../../../../libglusterfs/src/glfs-message-id.h
+
+/usr/include/stdc-predef.h:
+
+../../../../config.h:
+
+../../../../libglusterfs/src/globals.h:
+
+../../../../libglusterfs/src/xlator.h:
+
+/usr/include/stdio.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/inttypes.h:
+
+../../../../libglusterfs/src/event-history.h:
+
+../../../../libglusterfs/src/mem-types.h:
+
+../../../../libglusterfs/src/circ-buff.h:
+
+../../../../libglusterfs/src/common-utils.h:
+
+/usr/include/x86_64-linux-gnu/sys/uio.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigset.h:
+
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/select2.h:
+
+/usr/include/x86_64-linux-gnu/sys/sysmacros.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/x86_64-linux-gnu/bits/uio.h:
+
+/usr/include/netdb.h:
+
+/usr/include/netinet/in.h:
+
+/usr/include/x86_64-linux-gnu/sys/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
+
+/usr/include/x86_64-linux-gnu/asm/socket.h:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket2.h:
+
+/usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/rpc/netdb.h:
+
+/usr/include/x86_64-linux-gnu/bits/siginfo.h:
+
+/usr/include/x86_64-linux-gnu/bits/netdb.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/usr/include/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string2.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/assert.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/timex.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/openssl/md5.h:
+
+/usr/include/openssl/e_os2.h:
+
+/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/fnmatch.h:
+
+../../../../libglusterfs/src/logging.h:
+
+/usr/include/x86_64-linux-gnu/sys/time.h:
+
+../../../../libglusterfs/src/list.h:
+
+../../../../libglusterfs/src/glusterfs.h:
+
+/usr/include/x86_64-linux-gnu/sys/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/sys/statvfs.h:
+
+/usr/include/x86_64-linux-gnu/bits/statvfs.h:
+
+/usr/include/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/linux/errno.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/asm-generic/errno.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/dirent.h:
+
+/usr/include/x86_64-linux-gnu/bits/dirent.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/usr/include/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
+
+/usr/include/arpa/inet.h:
+
+/usr/include/x86_64-linux-gnu/sys/poll.h:
+
+/usr/include/x86_64-linux-gnu/bits/poll.h:
+
+/usr/include/x86_64-linux-gnu/bits/poll2.h:
+
+../../../../libglusterfs/src/glusterfs-fops.h:
+
+../../../../libglusterfs/src/compat.h:
+
+/usr/include/x86_64-linux-gnu/sys/un.h:
+
+/usr/include/x86_64-linux-gnu/sys/xattr.h:
+
+/usr/include/linux/xattr.h:
+
+/usr/include/linux/libc-compat.h:
+
+/usr/include/linux/falloc.h:
+
+/usr/include/argp.h:
+
+/usr/include/ctype.h:
+
+/usr/include/rpc/rpc.h:
+
+/usr/include/rpc/types.h:
+
+/usr/include/x86_64-linux-gnu/sys/param.h:
+
+/usr/include/signal.h:
+
+/usr/include/x86_64-linux-gnu/bits/signum.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigaction.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigstack.h:
+
+/usr/include/x86_64-linux-gnu/sys/ucontext.h:
+
+/usr/include/x86_64-linux-gnu/bits/sigthread.h:
+
+/usr/include/x86_64-linux-gnu/bits/param.h:
+
+/usr/include/linux/param.h:
+
+/usr/include/x86_64-linux-gnu/asm/param.h:
+
+/usr/include/asm-generic/param.h:
+
+/usr/include/rpc/xdr.h:
+
+/usr/include/rpc/auth.h:
+
+/usr/include/rpc/clnt.h:
+
+/usr/include/rpc/rpc_msg.h:
+
+/usr/include/rpc/auth_unix.h:
+
+/usr/include/rpc/auth_des.h:
+
+/usr/include/rpc/svc.h:
+
+/usr/include/rpc/svc_auth.h:
+
+../../../../libglusterfs/src/locking.h:
+
+../../../../libglusterfs/src/lkowner.h:
+
+../../../../libglusterfs/src/compat-uuid.h:
+
+/usr/include/uuid/uuid.h:
+
+../../../../libglusterfs/src/mem-pool.h:
+
+../../../../libglusterfs/src/iatt.h:
+
+../../../../libglusterfs/src/libglusterfs-messages.h:
+
+../../../../libglusterfs/src/glfs-message-id.h:
+
+../../../../libglusterfs/src/dict.h:
+
+../../../../libglusterfs/src/latency.h:
+
+../../../../libglusterfs/src/gf-dirent.h:
+
+../../../../libglusterfs/src/inode.h:
+
+../../../../libglusterfs/src/fd.h:
+
+../../../../libglusterfs/src/fd-lk.h:
+
+../../../../libglusterfs/src/stack.h:
+
+../../../../libglusterfs/src/globals.h:
+
+../../../../libglusterfs/src/client_t.h:
+
+../../../../libglusterfs/src/iobuf.h:
+
+/usr/include/x86_64-linux-gnu/sys/mman.h:
+
+/usr/include/x86_64-linux-gnu/bits/mman.h:
+
+/usr/include/x86_64-linux-gnu/bits/mman-linux.h:
+
+../../../../libglusterfs/src/options.h:
+
+../../../../libglusterfs/src/glusterfs.h:
+
+../../../../libglusterfs/src/dict.h:
+
+../../../../libglusterfs/src/xlator.h:
+
+../../../../libglusterfs/src/logging.h:
+
+../../../../libglusterfs/src/run.h:
+
+../../../../libglusterfs/src/defaults.h:
+
+../../../../libglusterfs/src/syscall.h:
+
+../../../../libglusterfs/src/compat.h:
+
+../../../../libglusterfs/src/compat-errno.h:
+
+glusterd.h:
+
+/usr/include/libgen.h:
+
+../../../../libglusterfs/src/compat-uuid.h:
+
+../../../../rpc/rpc-lib/src/rpc-clnt.h:
+
+../../../../libglusterfs/src/stack.h:
+
+../../../../rpc/rpc-lib/src/rpc-transport.h:
+
+../../../../rpc/rpc-lib/src/rpcsvc-common.h:
+
+../../../../libglusterfs/src/list.h:
+
+../../../../libglusterfs/src/timer.h:
+
+../../../../rpc/rpc-lib/src/xdr-common.h:
+
+../../../../libglusterfs/src/call-stub.h:
+
+../../../../libglusterfs/src/defaults.h:
+
+../../../../libglusterfs/src/default-args.h:
+
+../../../../libglusterfs/src/fd.h:
+
+../../../../libglusterfs/src/byte-order.h:
+
+glusterd-mem-types.h:
+
+../../../../libglusterfs/src/mem-types.h:
+
+../../../../rpc/rpc-lib/src/rpcsvc.h:
+
+../../../../libglusterfs/src/event.h:
+
+../../../../libglusterfs/src/mem-pool.h:
+
+../../../../libglusterfs/src/iobuf.h:
+
+../../../../rpc/rpc-lib/src/xdr-rpc.h:
+
+glusterd-sm.h:
+
+../../../../libglusterfs/src/store.h:
+
+glusterd-rcu.h:
+
+/usr/include/x86_64-linux-gnu/urcu-bp.h:
+
+/usr/include/x86_64-linux-gnu/urcu/map/urcu-bp.h:
+
+/usr/include/x86_64-linux-gnu/urcu-pointer.h:
+
+/usr/include/x86_64-linux-gnu/urcu/compiler.h:
+
+/usr/include/x86_64-linux-gnu/urcu/arch.h:
+
+/usr/include/x86_64-linux-gnu/urcu/config.h:
+
+/usr/include/x86_64-linux-gnu/urcu/syscall-compat.h:
+
+/usr/include/x86_64-linux-gnu/urcu/arch/generic.h:
+
+/usr/include/x86_64-linux-gnu/urcu/uatomic.h:
+
+/usr/include/x86_64-linux-gnu/urcu/system.h:
+
+/usr/include/x86_64-linux-gnu/urcu/uatomic/generic.h:
+
+/usr/include/x86_64-linux-gnu/urcu-call-rcu.h:
+
+/usr/include/x86_64-linux-gnu/urcu/wfcqueue.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdbool.h:
+
+/usr/include/x86_64-linux-gnu/urcu-defer.h:
+
+/usr/include/x86_64-linux-gnu/urcu-flavor.h:
+
+/usr/include/x86_64-linux-gnu/urcu/rculist.h:
+
+/usr/include/x86_64-linux-gnu/urcu/list.h:
+
+glusterd-snapd-svc.h:
+
+glusterd-svc-mgmt.h:
+
+glusterd-proc-mgmt.h:
+
+glusterd-conn-mgmt.h:
+
+glusterd-bitd-svc.h:
+
+../../../../rpc/xdr/src/glusterd1-xdr.h:
+
+../../../../rpc/rpc-lib/src/protocol-common.h:
+
+glusterd-pmap.h:
+
+../../../../libglusterfs/src/cli1-xdr.h:
+
+../../../../libglusterfs/src/syncop.h:
+
+/usr/include/ucontext.h:
+
+../../../../libglusterfs/src/events.h:
+
+../../../../libglusterfs/src/eventtypes.h:
+
+glusterd-op-sm.h:
+
+glusterd-hooks.h:
+
+glusterd-utils.h:
+
+../../../../rpc/xdr/src/glusterfs3-xdr.h:
+
+../../../../rpc/xdr/src/rpc-common-xdr.h:
+
+../../../../rpc/rpc-lib/src/xdr-common.h:
+
+../../../../rpc/xdr/src/glusterfs-fops.h:
+
+glusterd-peer-utils.h:
+
+glusterd-store.h:
+
+glusterd-messages.h:
+
+../../../../libglusterfs/src/glfs-message-id.h:

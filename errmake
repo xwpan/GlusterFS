@@ -1,0 +1,6 @@
+make[5]: *** 没有规则可以创建“name.lo”需要的目标“name.c”。 停止。
+make[4]: *** [all-recursive] 错误 1
+make[3]: *** [all-recursive] 错误 1
+make[2]: *** [all-recursive] 错误 1
+make[1]: *** [all-recursive] 错误 1
+make: *** [all] 错误 2
