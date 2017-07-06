@@ -5,6 +5,10 @@
 #include <stdint.h>
 /* for ps lib funcs */
 #include "ps.h"
+
+//pxw
+#include  <rte_common.h>
+#include  <rte_ethdev.h>
 /*----------------------------------------------------------------------------*/
 /**
  * Declaration to soothe down the warnings 

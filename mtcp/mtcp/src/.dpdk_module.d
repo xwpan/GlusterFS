@@ -1,12 +1,6 @@
 dpdk_module.o: dpdk_module.c \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_config.h \
- include/io_module.h ../../io_engine/include/ps.h include/mtcp.h \
- include/memory_mgt.h include/tcp_ring_buffer.h include/tcp_send_buffer.h \
- include/tcp_stream_queue.h include/socket.h include/mtcp_api.h \
- include/mtcp_epoll.h include/eventpoll.h include/addr_pool.h \
- include/logger.h include/stat.h include/io_module.h include/debug.h \
- include/mtcp.h include/tcp_in.h include/fhash.h include/tcp_stream.h \
- include/config.h \
+ include/io_module.h ../../io_engine/include/ps.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_common.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_ethdev.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_dev.h \
@@ -51,6 +45,12 @@ dpdk_module.o: dpdk_module.c \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_byteorder_64.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_eth_ctrl.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_dev_info.h \
+ include/mtcp.h include/memory_mgt.h include/tcp_ring_buffer.h \
+ include/tcp_send_buffer.h include/tcp_stream_queue.h include/socket.h \
+ include/mtcp_api.h include/mtcp_epoll.h include/eventpoll.h \
+ include/addr_pool.h include/logger.h include/stat.h include/io_module.h \
+ include/debug.h include/mtcp.h include/tcp_in.h include/fhash.h \
+ include/tcp_stream.h include/config.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_cycles.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/generic/rte_cycles.h \
  /home/dcslab/pxw/glusterfs-3.9.1/mtcp/dpdk/include/rte_errno.h \

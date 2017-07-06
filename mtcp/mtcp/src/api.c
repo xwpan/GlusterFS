@@ -1259,7 +1259,7 @@ CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 			rcvvar->rcvbuf->merged_len -= leftlen;
 			rcvvar->rcvbuf->head_seq = iter->next->seq;
 			//free this buf
-			free_pkts(iter->mbuf);
+			mtcp->iom->free_pkts(iter->mbuf);
 			//remove this fragment
 			iter->is_calloc = 0;
 			release = iter;
@@ -1273,7 +1273,7 @@ CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 			rcvvar->rcvbuf->merged_len -= iter->len;
 			rcvvar->rcvbuf->head_seq = iter->next->seq;
 			//free this buf
-			free_pkts(iter->mbuf);
+			mtcp->iom->free_pkts(iter->mbuf);
 			//remove the fragment
 			iter->is_calloc = 0;
 			release = iter;

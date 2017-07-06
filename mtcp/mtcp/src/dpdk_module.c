@@ -532,12 +532,17 @@ dpdk_destroy_handle(struct mtcp_thread_context *ctxt)
 {
 	struct dpdk_private_context *dpc;
 	int i;
+	int j;
 
 	dpc = (struct dpdk_private_context *) ctxt->io_private_context;	
 
 	/* free wmbufs */
 	for (i = 0; i < num_devices_attached; i++)
-		free_pkts(dpc->wmbufs[i].m_table, MAX_PKT_BURST);
+		// pxw
+		// 改成一个一个释放
+		//dpdk_free_pkts(dpc->wmbufs[i].m_table, MAX_PKT_BURST);
+		for (j = 0; j < dpc->wmbufs[i].len; j++)
+			dpdk_free_pkts (dpc->wmbufs[i].m_table[j]);
 
 #ifdef ENABLE_STATS_IOCTL
 	/* free fd */

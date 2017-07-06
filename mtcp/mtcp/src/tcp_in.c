@@ -597,7 +597,7 @@ ProcessTCPPayload(mtcp_manager_t mtcp, tcp_stream *cur_stream,
 			cur_stream->state == TCP_ST_FIN_WAIT_2) {
 		//RBRemove(mtcp->rbm_rcv, rcvvar->rcvbuf, rcvvar->rcvbuf->merged_len, AT_MTCP);
 		for (iter = rcvvar->rcvbuf->fctx; iter->next != NULL; iter = iter->next) {
-			free_pkts(iter->mbuf);
+			mtcp->iom->free_pkts(iter->mbuf);
 			RBRemove(mtcp->rbm_rcv, iter, AT_MTCP);
 		}
 	}
@@ -716,7 +716,7 @@ Handle_TCP_ST_LISTEN (mtcp_manager_t mtcp, uint32_t cur_ts,
 	}
 
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 
 }
 /*----------------------------------------------------------------------------*/
@@ -857,7 +857,7 @@ Handle_TCP_ST_SYN_RCVD (mtcp_manager_t mtcp, uint32_t cur_ts,
 	}
 
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
@@ -921,7 +921,7 @@ Handle_TCP_ST_CLOSE_WAIT (mtcp_manager_t mtcp, uint32_t cur_ts,
 				cur_stream->id, seq, cur_stream->rcv_nxt);
 		AddtoControlList(mtcp, cur_stream, cur_ts);
 		// pxw
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 
@@ -930,7 +930,7 @@ Handle_TCP_ST_CLOSE_WAIT (mtcp_manager_t mtcp, uint32_t cur_ts,
 				tcph, seq, ack_seq, window, payloadlen);
 	}
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
@@ -944,7 +944,7 @@ Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr
 				"weird seq: %u, expected: %u\n", 
 				cur_stream->id, seq, cur_stream->rcv_nxt);
 		//pxw
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 
@@ -967,7 +967,7 @@ Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr
 			DumpControlList(mtcp, mtcp->n_sender[0]);
 #endif
 			//pxw
-			free_pkts(buf);
+			mtcp->iom->free_pkts(buf);
 			return;
 		}
 
@@ -995,7 +995,7 @@ Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr
 	}
 
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
@@ -1009,7 +1009,7 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 				"weird seq: %u, expected: %u\n", 
 				cur_stream->id, seq, cur_stream->rcv_nxt);
 		AddtoControlList(mtcp, cur_stream, cur_ts);
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 
@@ -1039,7 +1039,7 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	} else {
 		TRACE_DBG("Stream %d: does not contain an ack!\n", 
 				cur_stream->id);
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 
@@ -1073,7 +1073,7 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	}
 
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
@@ -1089,7 +1089,7 @@ Handle_TCP_ST_FIN_WAIT_2 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	} else {
 		TRACE_DBG("Stream %d: does not contain an ack!\n", 
 				cur_stream->id);
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 
@@ -1127,7 +1127,7 @@ Handle_TCP_ST_FIN_WAIT_2 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	}
 
 	// pxw
-	free_pkts(buf);
+	mtcp->iom->free_pkts(buf);
 
 }
 /*----------------------------------------------------------------------------*/
@@ -1145,7 +1145,7 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 		if (!cur_stream->sndvar->is_fin_sent) {
 			TRACE_DBG("Stream %d (TCP_ST_CLOSING): "
 					"No FIN sent yet.\n", cur_stream->id);
-			free_pkts(buf);
+			mtcp->iom->free_pkts(buf);
 			return;
 		}
 
@@ -1161,7 +1161,7 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 #endif
 			//assert(0);
 			/* if the packet is not the ACK of FIN, ignore */
-			free_pkts(buf);
+			mtcp->iom->free_pkts(buf);
 			return;
 		}
 		
@@ -1175,12 +1175,12 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 		AddtoTimewaitList(mtcp, cur_stream, cur_ts);
 
 		// pxw
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 
 	} else {
 		CTRACE_ERROR("Stream %d (TCP_ST_CLOSING): Not ACK\n", 
 				cur_stream->id);
-		free_pkts(buf);
+		mtcp->iom->free_pkts(buf);
 		return;
 	}
 }
