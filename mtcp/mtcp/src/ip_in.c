@@ -22,7 +22,7 @@ static void pr_ip(FILE *fp, char *pref, int addr)
 /*----------------------------------------------------------------------------*/
 inline int 
 ProcessIPv4Packet(mtcp_manager_t mtcp, uint32_t cur_ts, 
-				  const int ifidx, unsigned char* pkt_data, int len)
+				  const int ifidx, unsigned char* pkt_data, int len, struct rte_mbuf* buf)
 {
 	
 	//FILE * fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/ipv4-type", "a+");
@@ -54,6 +54,7 @@ ProcessIPv4Packet(mtcp_manager_t mtcp, uint32_t cur_ts,
 #endif
 
 	// see if the version is correct
+	// 这部分功能没有实现
 	if (iph->version != 0x4 ) {
 		mtcp->iom->release_pkt(mtcp->ctx, ifidx, pkt_data, len);
 		return FALSE;
@@ -69,7 +70,7 @@ ProcessIPv4Packet(mtcp_manager_t mtcp, uint32_t cur_ts,
 	switch (iph->protocol) {
 		case IPPROTO_TCP:
 			
-			return ProcessTCPPacket(mtcp, cur_ts, ifidx, iph, ip_len);
+			return ProcessTCPPacket(mtcp, cur_ts, ifidx, iph, ip_len, buf);
 		case IPPROTO_ICMP:
 
 			return ProcessICMPPacket(mtcp, iph, ip_len);

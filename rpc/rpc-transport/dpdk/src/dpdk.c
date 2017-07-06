@@ -23,15 +23,13 @@
 #include <mtcp_epoll.h>
 #include "debug.h"
 
-#define MAX_FLOW_NUM  (10000)
+#define MAX_FLOW_NUM  (1000) //10000
 
 #define RCVBUF_SIZE (2*1024)
 #define SNDBUF_SIZE (8*1024)
 
 #define MAX_EVENTS (MAX_FLOW_NUM * 3)
 
-#define HTTP_HEADER_LEN 1024
-#define URL_LEN 128
 
 #define MAX_CPUS 16
 #define MAX_FILES 30
@@ -445,6 +443,7 @@ dpdk_ioq_churn (struct thread_context *ctx, rpc_transport_t *this)
                 //priv->idx = event_select_on (this->ctx->event_pool,
                 //                             priv->sock, priv->idx, -1, 0);
 		ev.events = MTCP_EPOLLIN; //清除EPOLLOUT
+		//ev.events &= ~MTCP_EPOLLOUT;
 		ev.data.sockid = priv->sock;
 		//rpc_transport_t *rt = ctx->trans_info[priv->sock];
 		//rt = this;
@@ -833,6 +832,7 @@ dpdk_submit_request (rpc_transport_t *this, rpc_transport_req_t *req) //客户�
 			//注册事件，并且更改为poll_out模式
                         //priv->idx = event_select_on (ctx->event_pool, priv->sock, priv->idx, -1, 1);
 			ev.events = MTCP_EPOLLIN | MTCP_EPOLLOUT; //mTCP没有实现seletc部分暂时in/out都设置
+			//ev.events |=  MTCP_EPOLLOUT; //mTCP没有实现seletc部分暂时in/out都设置
 			ev.data.sockid = priv->sock;
 		//	rpc_transport_t *rt = ctx->trans_info[priv->sock];
 		//    rt = this;
@@ -893,7 +893,8 @@ dpdk_submit_reply (rpc_transport_t *this, rpc_transport_reply_t *reply)
                         ret = 0;
                 }
                 if (need_poll_out) {
-			ev.events = MTCP_EPOLLIN | MTCP_EPOLLOUT; 
+		        ev.events = MTCP_EPOLLIN | MTCP_EPOLLOUT; 
+			//ev.events |= MTCP_EPOLLOUT;
 			ev.data.sockid = priv->sock;
 		//	rpc_transport_t *rt = ctx->trans_info[priv->sock];
            // rt = this;
@@ -1099,6 +1100,7 @@ dpdk_read_simple_msg (struct thread_context *ctx, rpc_transport_t *this)
 
                 remaining_size = RPC_FRAGSIZE (in->fraghdr) - frag->bytes_read;
 
+		// dpdk_rwv里面可能会调用多次
                 if (remaining_size > 0) {
                         ret = dpdk_rwv (ctx, this,
                                               in->pending_vector, 1,
@@ -1106,6 +1108,9 @@ dpdk_read_simple_msg (struct thread_context *ctx, rpc_transport_t *this)
                                               &in->pending_count,
                                               &bytes_read, 0);
                 }
+
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_simple_msg.");
 
                 if (ret == -1) {
                         gf_log (this->name, GF_LOG_WARNING,
@@ -1174,6 +1179,9 @@ dpdk_read_vectored_request (struct thread_context *ctx, rpc_transport_t *this, r
         case SP_STATE_READING_CREDBYTES:
                 dpdk_proto_read (ctx, priv, ret);
 
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_credbytes.");
+
                 request->vector_state = SP_STATE_READ_CREDBYTES;
 
                 /* fall through */
@@ -1194,6 +1202,9 @@ dpdk_read_vectored_request (struct thread_context *ctx, rpc_transport_t *this, r
 
         case SP_STATE_READING_VERFBYTES:
                 dpdk_proto_read (ctx, priv, ret);
+
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_verfbytes.");
 
                 request->vector_state = SP_STATE_READ_VERFBYTES;
 
@@ -1218,6 +1229,9 @@ sp_state_read_verfbytes:
         case SP_STATE_READING_PROGHDR:
                 dpdk_proto_read (ctx, priv, ret);
 
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_proghdr.");
+
 		request->vector_state =	SP_STATE_READ_PROGHDR;
 
 		/* fall through */
@@ -1241,6 +1255,9 @@ sp_state_read_proghdr:
 
 	case SP_STATE_READING_PROGHDR_XDATA:
 		dpdk_proto_read (ctx, priv, ret);
+
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_xdata.");
 
 		request->vector_state =	SP_STATE_READ_PROGHDR;
 		/* check if the vector_sizer() has more to say */
@@ -1335,6 +1352,9 @@ dpdk_read_request (struct thread_context *ctx, rpc_transport_t *this)
         case SP_STATE_READING_RPCHDR1:
                 dpdk_proto_read (ctx, priv, ret);
 
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_rpchdr.");
+		
                 request->header_state = SP_STATE_READ_RPCHDR1;
 
                 /* fall through */
@@ -1405,6 +1425,10 @@ dpdk_read_frag (struct thread_context *ctx, rpc_transport_t *this)
 
         case SP_STATE_READING_MSGTYPE:
                 dpdk_proto_read (ctx, priv, ret);
+			
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_msgtype.");
+
 
                 frag->state = SP_STATE_READ_MSGTYPE;
                 /* fall through */
@@ -1471,12 +1495,13 @@ dpdk_cached_read (struct thread_context *ctx, rpc_transport_t *this, struct iove
 		in->ra_served = 0;
 		in->ra_max = 0;
 		in->ra_buf = NULL;
-		goto uncached;
+		goto uncached;  // 去uncached 
 	}
 
+	// cached read，把socket内容全部读出来
 	if (!in->ra_max) {
 		/* first call after passing SP_STATE_READING_FRAGHDR */
-		in->ra_max = min (RPC_FRAGSIZE (in->fraghdr), GF_DPDK_RA_MAX);
+		in->ra_max = min (RPC_FRAGSIZE (in->fraghdr), GF_DPDK_RA_MAX); //最小是1024
 		/* Note that the in->iobuf is the primary iobuf into which
 		   headers are read into, and in->frag.fragcurrent points to
  		   some position in the buffer. By using this itself as our
@@ -1488,10 +1513,13 @@ dpdk_cached_read (struct thread_context *ctx, rpc_transport_t *this, struct iove
 	/* fill read-ahead */
 	if (in->ra_read < in->ra_max) {
 		struct iovec iov = {0, };
+		ret = -1;
+
 		iov.iov_base = &in->ra_buf[in->ra_read];
 		iov.iov_len = in->ra_max - in->ra_read;
 		int sock = ((dpdk_private_t *)this->private)->sock;
 		ret = mtcp_readv (ctx->mctx, sock, &iov, 1);
+
 		if (ret > 0)
 			in->ra_read += ret;
 
@@ -1499,12 +1527,14 @@ dpdk_cached_read (struct thread_context *ctx, rpc_transport_t *this, struct iove
 		   be served even if readahead could not progress */
 	}
 
+	// 从已经存到iov中的数据取出req_len长度的数据，修改指针ra_served
 	/* serve cached */
 	if (in->ra_served < in->ra_read) {
 		ret = iov_load (opvector, opcount, &in->ra_buf[in->ra_served],
 				min (req_len, (in->ra_read - in->ra_served)));
 
 		in->ra_served += ret;
+
 		/* Do not read uncached and cached in the same call */
 		goto out;
 	}
@@ -1572,6 +1602,9 @@ dpdk_rwv (struct thread_context *ctx, rpc_transport_t *this, struct iovec *vecto
                 } else {// 2. recv
 			ret = dpdk_cached_read (ctx, this, opvector, opcount);	//modified
 
+			//pxw
+			//gf_log("pxw", GF_LOG_WARNING, "(dpdk) readv return %d bytes", ret);
+
 			if (ret == 0) {
 				gf_log(this->name,GF_LOG_DEBUG,"EOF on socket");
 				errno = ENODATA;
@@ -1622,7 +1655,7 @@ dpdk_rwv (struct thread_context *ctx, rpc_transport_t *this, struct iovec *vecto
                                 moved += opvector[0].iov_len;
                                 opvector++;
                                 opcount--;
-                        } else {
+                        } else { //没有读完，继续
                                 opvector[0].iov_len -= (ret - moved);
                                 opvector[0].iov_base += (ret - moved);
                                 moved += (ret - moved);
@@ -1696,7 +1729,7 @@ dpdk_proto_state_machine (struct thread_context *ctx, rpc_transport_t *this, rpc
                         in->pending_vector = in->vector;
                         in->pending_vector->iov_base =  &in->fraghdr;
 
-                        in->pending_vector->iov_len  = sizeof (in->fraghdr);
+                        in->pending_vector->iov_len  = sizeof (in->fraghdr);  // 先对每个包取出4字节头
 
                         in->record_state = SP_STATE_READING_FRAGHDR;
 
@@ -1705,7 +1738,11 @@ dpdk_proto_state_machine (struct thread_context *ctx, rpc_transport_t *this, rpc
                         ret = dpdk_rwv (ctx, this, in->pending_vector, 1,//修改
                                               &in->pending_vector,
                                               &in->pending_count,
-                                              NULL, 0);
+                        		      NULL, 0);
+			
+			// pxw
+			//gf_log ("pxw", GF_LOG_WARNING, "dpdk_read_fraghdr.");
+
                         if (ret == -1)
                                 goto out;
 
@@ -1757,7 +1794,7 @@ dpdk_proto_state_machine (struct thread_context *ctx, rpc_transport_t *this, rpc
                         /* fall through */
 
                 case SP_STATE_READING_FRAG://读取帧信息
-                        ret = dpdk_read_frag (ctx, this);//修改
+                        ret = dpdk_read_frag (ctx, this);//rwv, 解析program参数
 
                         if ((ret == -1) ||
                             (frag->bytes_read != RPC_FRAGSIZE (in->fraghdr))) {
@@ -1779,8 +1816,11 @@ dpdk_proto_state_machine (struct thread_context *ctx, rpc_transport_t *this, rpc
                          */
                         if (pollin != NULL) {
                                 int count = 0;
-                                in->iobuf_size = (in->total_bytes_read -
-                                                  in->payload_vector.iov_len);
+                                in->iobuf_size = (in->total_bytes_read -  //实际收到的包大小
+                                                  in->payload_vector.iov_len); //实际读写数据大小
+				
+				// pxw
+			//	gf_log ("pxw", GF_LOG_WARNING, "(dpdk) total_bytes_read : %8d, iobuf_size : %8d",in->total_bytes_read,  in->iobuf_size);
 
                                 memset (vector, 0, sizeof (vector));
 
@@ -2880,7 +2920,7 @@ unlock:
 	if (ret != -1 && sock != -1) {
 	mctx = ctx->mctx;
 	while (1) { //usr app thread死循环：
-		nevents = mtcp_epoll_wait(mctx, ep, events, MAX_EVENTS, -1); //等待事件
+		nevents = mtcp_epoll_wait(mctx, ep, events, MAX_EVENTS, 16); //等待事件
 		if (nevents < 0) {
 			break;
 		}

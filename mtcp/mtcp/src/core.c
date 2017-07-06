@@ -53,6 +53,10 @@
 #define PER_STREAM_TCHECK 1			// in ms
 #define PS_SELECT_TIMEOUT 100		// in us 
 
+// pxw
+#define FLUSH_THRESHOLD  4
+#define FLUSH_TIMEOUT  4  // in us
+
 #define GBPS(bytes) (bytes * 8.0 / (1000 * 1000 * 1000))
 
 /*----------------------------------------------------------------------------*/
@@ -431,16 +435,24 @@ FlushEpollEvents(mtcp_manager_t mtcp, uint32_t cur_ts)
 {
 	struct mtcp_epoll *ep = mtcp->ep;
 	struct event_queue *usrq = ep->usr_queue;
-	struct event_queue *mtcpq = ep->mtcp_queue;
-	//FILE * fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/flush-epoll-event", "a+");
-
+	struct event_queue *mtcpq = ep->mtcp_queue;	
 	// pxw
-//	fprintf (fp, "mtcp_queue has %d events, usr_queue has %d events , usrq size is %d", 
-//			 mtcpq->num_events, usrq->num_events, usrq->size);
-//   fflush (fp);
+	
+	//FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/FlushEpollEvent_epolllock", "a+");
+//	fprintf (fp, "mtcp_queue has %d events, usr_queue has %d events,shadow_queue has %d events\n)", 
+//		 mtcpq->num_events, usrq->num_events,ep->usr_shadow_queue->num_events);
+//        fflush (fp);
+//        fclose(fp);
 
-	pthread_mutex_lock(&ep->epoll_lock);
+
+//old lock
+//	pthread_mutex_lock(&ep->epoll_lock);
+	
+
 	if (ep->mtcp_queue->num_events > 0) {
+	// pxw
+	//fprintf(fp, "epoll lock\n");
+	//fflush (fp);
 		/* while mtcp_queue have events */
 		/* and usr_queue is not full */
 		while (mtcpq->num_events > 0 && usrq->num_events < usrq->size) {
@@ -457,19 +469,56 @@ FlushEpollEvents(mtcp_manager_t mtcp, uint32_t cur_ts)
 		}
 	}
 
+	// pxw
+	// if available events >= FLUSH_THRESHOLD || if period > timeout, awake
+	// user thread, or quit this function.
+/*
+ 	int total_events = ep->usr_queue->num_events + ep->usr_shadow_queue->num_events;
+
+	if ((total_events >= FLUSH_THRESHOLD) || ((*idletime) > FLUSH_TIMEOUT)) 
+	{
+*/
 	/* if there are pending events, wake up user */
-	if (ep->waiting && (ep->usr_queue->num_events > 0 || 
-				ep->usr_shadow_queue->num_events > 0)) {
-		STAT_COUNT(mtcp->runstat.rounds_epoll);
-		TRACE_EPOLL("Broadcasting events. num: %d, cur_ts: %u, prev_ts: %u\n", 
-				ep->usr_queue->num_events, cur_ts, mtcp->ts_last_event);
-		mtcp->ts_last_event = cur_ts;
-		ep->stat.wakes++;
-		pthread_cond_signal(&ep->epoll_cond); //唤醒？？
+		if (ep->waiting && (ep->usr_queue->num_events > 0 || ep->usr_shadow_queue->num_events > 0)) {
+			STAT_COUNT(mtcp->runstat.rounds_epoll);
+			TRACE_EPOLL("Broadcasting events. num: %d, cur_ts: %u, prev_ts: %u\n", 
+					ep->usr_queue->num_events, cur_ts, mtcp->ts_last_event);
+			mtcp->ts_last_event = cur_ts;
+			ep->stat.wakes++;
+			//pxw
+		/*	fprintf (fp, "usr_queue has %d events,shadow_queue has %d events,idletime = %d\n",
+				       	usrq->num_events, ep->usr_shadow_queue->num_events, *idletime);
+        		fflush (fp);
+		*/
+		
+			// *idletime  = 0;
+
+			//fprintf (fp, "epoll cond signal, EVENT:   usr queue : %5d ,usr shadow queue : %5d\n",ep->usr_queue->num_events, ep->usr_shadow_queue->num_events);
+			//fflush (fp);
+			//fprintf(fp, "epoll unlock\n");
+	
+			//new lock
+			pthread_mutex_lock(&ep->epoll_lock);
+			pthread_cond_signal(&ep->epoll_cond); //唤醒？？
+			pthread_mutex_unlock(&ep->epoll_lock);
+
 		//fprintf (fp, "mtcp thread waked up app thread\n");
+		} 
+/*		 else
+			(*idletime)++;
+	} else {
+		(*idletime)++;
+
 	}
-	//fclose (fp);
-	pthread_mutex_unlock(&ep->epoll_lock);
+*/
+        //fclose(fp);
+	
+
+// old lock
+	//pthread_mutex_unlock(&ep->epoll_lock);
+
+	//fclose(fp);
+
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
@@ -716,6 +765,7 @@ DestroyRemainingFlows(mtcp_manager_t mtcp)
 }
 #endif
 /*----------------------------------------------------------------------------*/
+// dpdk 不执行
 static void 
 InterruptApplication(mtcp_manager_t mtcp)
 {
@@ -755,11 +805,13 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 	int rx_inf, tx_inf;
 	struct timeval cur_ts = {0};
 	uint32_t ts, ts_prev;
-	int thresh;
+//	int thresh;  //用于下面thresh检查
+	//int idletime;
 
 	// pxw
 	// verify if packets has been received
-//	FILE * fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/pkt-loop", "w+");
+	//FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/RunMainLoop", "a+");
+	//idletime = 0;
 
 	gettimeofday(&cur_ts, NULL);
 	TRACE_DBG("CPU %d: mtcp thread running.\n", ctx->cpu);
@@ -779,13 +831,22 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 
 			recv_cnt = mtcp->iom->recv_pkts(ctx, rx_inf); //收包函数，收到 recv_cnt个包
 			STAT_COUNT(mtcp->runstat.rounds_rx_try);
+			
+			//if (recv_cnt > 0)
+			//{
+				// pxw	
+				//fprintf (fp, "dpdk_recv_pkts received  %d packets\n", recv_cnt);
+				//fflush(fp);
+         		//}
 
 			for (i = 0; i < recv_cnt; i++) {//对每个包：
 				uint16_t len;
 				uint8_t *pktbuf;
-				pktbuf = mtcp->iom->get_rptr(mtcp->ctx, rx_inf, i, &len); //获得第i个包内容
+				struct rte_mbuf *mbuf = NULL;
+
+				pktbuf = mtcp->iom->get_rptr(mtcp->ctx, rx_inf, i, &len, mbuf); //获得第i个包内容
 				if (pktbuf != NULL) {
-					ProcessPacket(mtcp, rx_inf, ts, pktbuf, len);//处理包,解包（协议栈的具体工作）
+					ProcessPacket(mtcp, rx_inf, ts, pktbuf, len, mbuf);//处理包,解包（协议栈的具体工作）
 				}
 				else
 					mtcp->nstat.rx_errors[rx_inf]++;
@@ -794,7 +855,8 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 		STAT_COUNT(mtcp->runstat.rounds_rx);
 
 		/* interaction with application */
-		if (mtcp->flow_cnt > 0) {  //并发流数
+		// 这部分功能先注释
+//		if (mtcp->flow_cnt > 0) {  //并发流数
 			
 			/* check retransmission timeout and timewait expire */
 #if 0
@@ -805,21 +867,21 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 			if (recv_cnt > 0 && thresh > recv_cnt)
 				thresh = recv_cnt;
 #endif
-			thresh = CONFIG.max_concurrency;
+//			thresh = CONFIG.max_concurrency;
 
 			/* Eunyoung, you may fix this later 
 			 * if there is no rcv packet, we will send as much as possible
 			 */
-			if (thresh == -1)
-				thresh = CONFIG.max_concurrency;
+//			if (thresh == -1)
+//				thresh = CONFIG.max_concurrency;
 
-			CheckRtmTimeout(mtcp, ts, thresh);
-			CheckTimewaitExpire(mtcp, ts, CONFIG.max_concurrency);
+//			CheckRtmTimeout(mtcp, ts, thresh);
+//			CheckTimewaitExpire(mtcp, ts, CONFIG.max_concurrency);
 
-			if (CONFIG.tcp_timeout > 0 && ts != ts_prev) {
-				CheckConnectionTimeout(mtcp, ts, thresh);
-			}
-		}
+//			if (CONFIG.tcp_timeout > 0 && ts != ts_prev) {
+//				CheckConnectionTimeout(mtcp, ts, thresh);
+//			}
+//		}
 
 		/* if epoll is in use, flush all the queued events */
 		if (mtcp->ep) {
@@ -827,7 +889,7 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 		}
 
 		if (mtcp->flow_cnt > 0) {
-			/* hadnle stream queues  */
+			/* handle stream queues  */
 			HandleApplicationCalls(mtcp, ts); // 把queue中数据放入list
 		}
 
@@ -849,15 +911,16 @@ RunMainLoop(struct mtcp_thread_context *ctx)
 			}
 		}
 
-		mtcp->iom->select(ctx);//如果一段时间内没有收到包，休眠mTCP线程
+		// 该功能已经注释
+		//mtcp->iom->select(ctx);//如果一段时间内没有收到包，休眠mTCP线程
 
-		if (ctx->interrupt) {
-			InterruptApplication(mtcp);
-		}
+		//if (ctx->interrupt) {
+		//	InterruptApplication(mtcp);
+		//}
 	}
 
 	// pxw
-//	fclose (fp);
+	//fclose (fp);
 
 #if TESTING
 	DestroyRemainingFlows(mtcp);
@@ -933,8 +996,7 @@ InitializeMTCPManager(struct mtcp_thread_context* ctx)
 #define	IS_HUGEPAGE 0
 #endif
 
-	mtcp->flow_pool = MPCreate(sizeof(tcp_stream),
-								sizeof(tcp_stream) * CONFIG.max_concurrency, IS_HUGEPAGE);
+	mtcp->flow_pool = MPCreate(sizeof(tcp_stream),sizeof(tcp_stream) * CONFIG.max_concurrency, IS_HUGEPAGE);
 	if (!mtcp->flow_pool) {
 		CTRACE_ERROR("Failed to allocate tcp flow pool.\n");
 		return NULL;
@@ -1199,6 +1261,9 @@ mtcp_create_context(int cpu)
 		return NULL;
 	}
 	InitLogThreadContext(g_logctx[cpu], cpu);
+
+	// pxw
+	// 禁用log线程没什么用处。。
 	if (pthread_create(&log_thread[cpu], 
 				NULL, ThreadLogMain, (void *)g_logctx[cpu])) { //创建log线程,每个app线程都有一个log 线程
 		perror("pthread_create");
@@ -1207,6 +1272,7 @@ mtcp_create_context(int cpu)
 		free(mctx);
 		return NULL;
 	}
+
 
 	/* Wake up mTCP threads (wake up I/O threads) */
 	if (current_iomodule_func == &dpdk_module_func) {
@@ -1434,9 +1500,9 @@ mtcp_init(const char *config_file) //调用load_module
 	int i;
 	int ret;
 	// pxw
-	FILE *fp =fopen("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_init", "w+");
-	char *buf = strdup(config_file);
-	fprintf ( fp, "file location : %s\n", buf );
+	//FILE *fp =fopen("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_init", "w+");
+	//char *buf = strdup(config_file);
+	//fprintf ( fp, "file location : %s\n", buf );
   
 
 	if (geteuid()) {
@@ -1449,8 +1515,8 @@ mtcp_init(const char *config_file) //调用load_module
 	/* set to max cpus only if user has not arbitrarily set it to lower # */
 	num_cpus = (CONFIG.num_cores == 0) ? GetNumCPUs() : CONFIG.num_cores;
 	//num_cpus = 1;
-	fprintf ( fp,"num_cpus = %d, MAX_CPUS = %d\n", num_cpus, MAX_CPUS);
-  fflush (fp);
+	//fprintf ( fp,"num_cpus = %d, MAX_CPUS = %d\n", num_cpus, MAX_CPUS);
+  	//fflush (fp);
 			
 	assert(num_cpus >= 1);
 
@@ -1462,7 +1528,6 @@ mtcp_init(const char *config_file) //调用load_module
 		exit(EXIT_FAILURE);
 	}
 */
-	//fprintf ( fp,"1\n" );
 	
 	for (i = 0; i < num_cpus; i++) {
 		g_mtcp[i] = NULL;
@@ -1472,18 +1537,14 @@ mtcp_init(const char *config_file) //调用load_module
 
 	ret = LoadConfiguration(config_file);
 
-	//fprintf ( fp,"2\n" );
 
 	if (ret) {
 		TRACE_CONFIG("Error occured while loading configuration.\n");
 		return -1;
 	}
 
-	//fprintf ( fp,"3\n" );
-	
 	PrintConfiguration();
 
-	//fprintf ( fp,"4\n" );
 
 	for (i = 0; i < CONFIG.eths_num; i++) {
 		ap[i] = CreateAddressPool(CONFIG.eths[i].ip_addr, 1);

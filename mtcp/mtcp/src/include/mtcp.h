@@ -48,9 +48,12 @@
 #define TCP_OPT_SACK_ENABLED        FALSE	/* not implemented */
 
 #define LOCK_STREAM_QUEUE	FALSE
-#define USE_SPIN_LOCK		TRUE
+#define USE_SPIN_LOCK		TRUE // default true ---改成false用mutex lock会出错。。
 #define INTR_SLEEPING_MTCP	TRUE
-#define PROMISCUOUS_MODE	TRUE
+//#define PROMISCUOUS_MODE	TRUE
+
+// pxw
+#define PROMISCUOUS_MODE	FALSE
 
 /* blocking api became obsolete */
 #define BLOCKING_SUPPORT	FALSE

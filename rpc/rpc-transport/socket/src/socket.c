@@ -386,7 +386,7 @@ __socket_ssl_readv (rpc_transport_t *this, struct iovec *opvector, int opcount)
 	if (priv->use_ssl) { //用ssl
 		ret = ssl_read_one (this, opvector->iov_base, opvector->iov_len);
 	} else { //不用ssl
-		ret = sys_readv (sock, opvector, IOV_MIN(opcount)); //调用readv
+		ret = sys_readv (sock, opvector, IOV_MIN(opcount)); //调用readv  IOV_MIN():比较IOV_MAX(1024)和opcount的min
 	}
 
 	return ret;
@@ -430,7 +430,7 @@ __socket_cached_read (rpc_transport_t *this, struct iovec *opvector, int opcount
 
 	if (!in->ra_max) {
 		/* first call after passing SP_STATE_READING_FRAGHDR */
-		in->ra_max = min (RPC_FRAGSIZE (in->fraghdr), GF_SOCKET_RA_MAX);
+		in->ra_max = min (RPC_FRAGSIZE (in->fraghdr), GF_SOCKET_RA_MAX);  //GF_SOCKET_RA_MAX = 1024
 		/* Note that the in->iobuf is the primary iobuf into which
 		   headers are read into, and in->frag.fragcurrent points to
  		   some position in the buffer. By using this itself as our
@@ -552,6 +552,9 @@ __socket_rwv (rpc_transport_t *this, struct iovec *vector, int count,
                         this->total_bytes_write += ret;
                 } else {//2.---------------------recv---------------
 			ret = __socket_cached_read (this, opvector, opcount);
+
+			// pxw
+			//gf_log ("pxw", GF_LOG_WARNING, "(socket) readv : %d",ret);
 
 			if (ret == 0) {
 				gf_log(this->name,GF_LOG_DEBUG,"EOF on socket");
@@ -1260,6 +1263,8 @@ __socket_read_simple_msg (rpc_transport_t *this)
                                               &in->pending_vector,
                                               &in->pending_count,
                                               &bytes_read);
+			// pxw
+		//	gf_log ("pxw", GF_LOG_WARNING, "socket_read_simple_msg : %d", ret);
                 }
 
                 if (ret == -1) {
@@ -1350,7 +1355,10 @@ __socket_read_vectored_request (rpc_transport_t *this, rpcsvc_vector_sizer vecto
         case SP_STATE_READING_CREDBYTES:
                 __socket_proto_read (priv, ret);
 
-                request->vector_state = SP_STATE_READ_CREDBYTES;
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "socket_read_credbytes : %d", ret);
+                
+		request->vector_state = SP_STATE_READ_CREDBYTES;
 
                 /* fall through */
 
@@ -1371,7 +1379,10 @@ __socket_read_vectored_request (rpc_transport_t *this, rpcsvc_vector_sizer vecto
         case SP_STATE_READING_VERFBYTES:
                 __socket_proto_read (priv, ret);
 
-                request->vector_state = SP_STATE_READ_VERFBYTES;
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "socket_read_VERFBYTES : %d", ret);
+                
+		request->vector_state = SP_STATE_READ_VERFBYTES;
 
                 /* fall through */
 
@@ -1393,6 +1404,8 @@ sp_state_read_verfbytes:
 
         case SP_STATE_READING_PROGHDR:
                 __socket_proto_read (priv, ret);
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "socket_read_proghdr : %d", ret);
 
 		request->vector_state =	SP_STATE_READ_PROGHDR;
 
@@ -1417,6 +1430,8 @@ sp_state_read_proghdr:
 
 	case SP_STATE_READING_PROGHDR_XDATA:
 		__socket_proto_read (priv, ret);
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "socket_read_proghdr_xdata : %d", ret);
 
 		request->vector_state =	SP_STATE_READ_PROGHDR;
 		/* check if the vector_sizer() has more to say */
@@ -1513,6 +1528,9 @@ __socket_read_request (rpc_transport_t *this)
 
         case SP_STATE_READING_RPCHDR1:
                 __socket_proto_read (priv, ret);
+
+		// pxw
+	//	gf_log ("pxw", GF_LOG_WARNING, "socket_read_rpchdr1s : %d", ret);
 
                 request->header_state = SP_STATE_READ_RPCHDR1;
 
@@ -1972,6 +1990,9 @@ __socket_read_frag (rpc_transport_t *this)
         case SP_STATE_READING_MSGTYPE:
                 __socket_proto_read (priv, ret);
 
+		// pxw
+		//gf_log ("pxw", GF_LOG_WARNING, "socket_read_msgtypes : %d", ret);
+
                 frag->state = SP_STATE_READ_MSGTYPE;
                 /* fall through */
 
@@ -2073,7 +2094,7 @@ __socket_proto_state_machine (rpc_transport_t *this,  //处理接收到的数据
         while (in->record_state != SP_STATE_COMPLETE) { //从头往下执行状态机，知道rpc记录完成服务请求为止
                 switch (in->record_state) {
 
-                case SP_STATE_NADA: //开始状态
+                case SP_STATE_NADA: //开始状态,初始化
                         in->total_bytes_read = 0;
                         in->payload_vector.iov_len = 0;
 
@@ -2168,6 +2189,8 @@ __socket_proto_state_machine (rpc_transport_t *this,  //处理接收到的数据
                                 in->iobuf_size = (in->total_bytes_read -
                                                   in->payload_vector.iov_len);
 
+				// pxw
+				//gf_log ("pxw", GF_LOG_WARNING, "(socket) total_bytes_read : %8d, in->iobuf_size : %8d", in->total_bytes_read, in->iobuf_size);
                                 memset (vector, 0, sizeof (vector));
 
                                 if (in->iobref == NULL) {
@@ -3229,7 +3252,6 @@ err:
 
         return ret;
 }
-
 
 static int
 socket_listen (rpc_transport_t *this)

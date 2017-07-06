@@ -16,7 +16,7 @@
 #define MAX_IOVEC 16
 #endif /* MAX_IOVEC */
 
-#define MAX_FLOW_NUM (10000)
+#define MAX_FLOW_NUM (1000)   //10000
 
 #define GF_DEFAULT_DPDK_LISTEN_PORT  GF_DEFAULT_BASE_PORT  //24007
 
@@ -151,21 +151,21 @@ struct gf_dpdk_incoming_frag {
         dpdk_sp_rpcfrag_state_t state;
 };
 
-#define GF_DPDK_RA_MAX 1024
+#define GF_DPDK_RA_MAX 4096  // default: 1024
 
 struct gf_dpdk_incoming {
         dpdk_sp_rpcrecord_state_t  record_state;
         struct gf_dpdk_incoming_frag frag;
         char                *proghdr_base_addr;
-        struct iobuf        *iobuf;
+        struct iobuf        *iobuf; //RPC头
         size_t               iobuf_size;
         struct iovec         vector[2];
         int                  count;
-        struct iovec         payload_vector;
+        struct iovec         payload_vector; //实际读写数据
         struct iobref       *iobref;
-        rpc_request_info_t  *request_info;
-        struct iovec        *pending_vector;
-        int                  pending_count;
+        rpc_request_info_t  *request_info; 
+        struct iovec        *pending_vector; //iobuf 或者 payload_vector
+        int                  pending_count; // 1/0
         uint32_t             fraghdr;
         char                 complete_record;
         msg_type_t           msg_type;

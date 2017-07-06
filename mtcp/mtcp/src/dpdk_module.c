@@ -46,9 +46,9 @@
 #define MBUF_SIZE 			(BUF_SIZE + sizeof(struct rte_mbuf) + RTE_PKTMBUF_HEADROOM)
 #define NB_MBUF				8192
 #define MEMPOOL_CACHE_SIZE		256
-//#define RX_IDLE_ENABLE			1
-#define RX_IDLE_TIMEOUT			1	/* in micro-seconds */
-#define RX_IDLE_THRESH			64
+//#define RX_IDLE_ENABLE			1     //  原先注释
+#define RX_IDLE_TIMEOUT			1	/* in micro-seconds 1*/ 
+#define RX_IDLE_THRESH			64   // 64
 
 /*
  * RX and TX Prefetch, Host, and Write-back threshold values should be
@@ -109,11 +109,11 @@ static struct rte_eth_conf port_conf = {
 		.split_hdr_size = 	0, //从上到下依次0 0 1 0 0 1 1
 		.header_split   = 	0, /**< Header Split disabled */
 		.hw_ip_checksum = 	1, /**< IP checksum offload enabled */
-		.hw_vlan_filter = 	1, /**< VLAN filtering disabled */
-		.jumbo_frame    = 	1, /**< Jumbo Frame Support disabled */
+		.hw_vlan_filter = 	0, /**< VLAN filtering disabled */
+		.jumbo_frame    = 	0, /**< Jumbo Frame Support disabled */
 		.hw_strip_crc   = 	1, /**< CRC stripped by hardware */
 		// pxw
-		.hw_vlan_strip    =     1, /**< VLAN strip enable. */
+		//.hw_vlan_strip    =     1, /**< VLAN strip enable. */
 //#define ENABLELRO
 #ifdef ENABLELRO
 		.enable_lro	=	1, /**< Enable LRO */ //开启会报错
@@ -378,30 +378,45 @@ dpdk_get_wptr(struct mtcp_thread_context *ctxt, int nif, uint16_t pktsize)
 	return (uint8_t *)ptr;
 }
 /*----------------------------------------------------------------------------*/
-static inline void
+// pxw  --- old
+/*static inline void
 free_pkts(struct rte_mbuf **mtable, unsigned len)
 {
 	int i;
 
-	/* free the freaking packets */
+	//free the freaking packets 
 	for (i = 0; i < len; i++) {
 		rte_pktmbuf_free(mtable[i]);
 		RTE_MBUF_PREFETCH_TO_FREE(mtable[i+1]);
 	}
 }
+*/
+static inline void
+dpdk_free_pkts(struct rte_mbuf *buf)
+{
+	rte_pktmbuf_free(buf);
+	//RTE_MBUF_PREFETCH_TO_FREE(mtable[i+1]);
+
+}
 /*----------------------------------------------------------------------------*/
 int32_t
-dpdk_recv_pkts(struct mtcp_thread_context *ctxt, int ifidx)
+dpdk_recv_pkts(struct mtcp_thread_context *ctxt, int ifidx) //实际传DMA中mbuf指针
 {
 	struct dpdk_private_context *dpc;
 	int ret;
 
 	dpc = (struct dpdk_private_context *) ctxt->io_private_context;
 
+	// pxw
+	// 重置rmbufs结构以接受新的数据包，但是不释放rte_mbuf (回头读)
+	/*
 	if (dpc->rmbufs[ifidx].len != 0) {
 		free_pkts(dpc->rmbufs[ifidx].m_table, dpc->rmbufs[ifidx].len);
 		dpc->rmbufs[ifidx].len = 0;
 	}
+	*/
+	dpc->rmbufs[ifidx].len = 0;
+	//dpc->rmbufs[ifidx].m_table;
 
 	ret = rte_eth_rx_burst((uint8_t)ifidx, ctxt->cpu,
 			       dpc->pkts_burst, MAX_PKT_BURST);
@@ -457,7 +472,7 @@ ip_reassemble(struct dpdk_private_context *dpc, struct rte_mbuf *m)
 #endif
 /*----------------------------------------------------------------------------*/
 uint8_t *
-dpdk_get_rptr(struct mtcp_thread_context *ctxt, int ifidx, int index, uint16_t *len)
+dpdk_get_rptr(struct mtcp_thread_context *ctxt, int ifidx, int index, uint16_t *len, struct rte_mbuf *mbuf) //增加了获取rte_mbuf地址相关代码
 {
 	struct dpdk_private_context *dpc;
 	struct rte_mbuf *m;
@@ -466,6 +481,10 @@ dpdk_get_rptr(struct mtcp_thread_context *ctxt, int ifidx, int index, uint16_t *
 	dpc = (struct dpdk_private_context *) ctxt->io_private_context;	
 
 	m = dpc->pkts_burst[index];
+	
+	// pxw
+	mbuf = m;
+
 #ifdef IP_DEFRAG
 	m = ip_reassemble(dpc, m);
 #endif
@@ -492,13 +511,17 @@ dpdk_get_rptr(struct mtcp_thread_context *ctxt, int ifidx, int index, uint16_t *
 int32_t
 dpdk_select(struct mtcp_thread_context *ctxt)
 {
+        //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/select_usleep","a+");
 #ifdef RX_IDLE_ENABLE
 	struct dpdk_private_context *dpc;
 	
 	dpc = (struct dpdk_private_context *) ctxt->io_private_context;
-	if (dpc->rx_idle > RX_IDLE_THRESH) {//当recv包时连续多次未接受到数据包，该线程休眠一定时间
+	if (dpc->rx_idle > RX_IDLE_THRESH) {//当recv包时连续多次未接受到数据包，该线程休眠一定时间 rx_idle > 64
 		dpc->rx_idle = 0;
-		usleep(RX_IDLE_TIMEOUT);
+	//	fprintf (fp, "sleep\n");
+	//	fflush(fp);
+	//	fclose(fp);
+		usleep(RX_IDLE_TIMEOUT);  // 1. 休眠1 微妙
 	}
 #endif
 	return 0;
@@ -681,7 +704,10 @@ dpdk_load_module(void)
 					 ret, (unsigned) portid);
 			
 			printf("done: \n");
-			rte_eth_promiscuous_enable(portid);
+			
+			// pxw
+			// 关闭混杂模式
+		        //rte_eth_promiscuous_enable(portid);
 			
                         /* retrieve current flow control settings per port */
 			memset(& fc_conf, 0, sizeof(fc_conf));
@@ -829,7 +855,9 @@ io_module_func dpdk_module_func = {
 	.get_rptr	   	   = dpdk_get_rptr,
 	.select			   = dpdk_select, //休眠只用于recv包
 	.destroy_handle		   = dpdk_destroy_handle,
-	.dev_ioctl		   = dpdk_dev_ioctl
+	.dev_ioctl		   = dpdk_dev_ioctl,
+	//pxw
+	.free_pkts		   = dpdk_free_pkts
 };
 /*----------------------------------------------------------------------------*/
 #else
@@ -844,7 +872,9 @@ io_module_func dpdk_module_func = {
 	.get_rptr	   	   = NULL,
 	.select			   = NULL,
 	.destroy_handle		   = NULL,
-	.dev_ioctl		   = NULL
+	.dev_ioctl		   = NULL,
+	//pxw
+	.free_pkts		   = NULL
 };
 /*----------------------------------------------------------------------------*/
 #endif /* !DISABLE_DPDK */

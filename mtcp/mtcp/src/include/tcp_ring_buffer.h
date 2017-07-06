@@ -30,13 +30,50 @@ typedef struct mtcp_manager* mtcp_manager_t;
 #endif
 typedef struct rb_manager* rb_manager_t;
 /*----------------------------------------------------------------------------*/
-struct fragment_ctx
+// pxw
+/* 
+ struct fragment_ctx
 {
 	uint32_t seq;
 	uint32_t len : 31;
 	uint32_t is_calloc : 1;
 	struct fragment_ctx *next;
 };
+*/
+
+struct fragment_ctx
+{
+	uint32_t seq;
+	uint32_t seq_end;
+	uint32_t len;
+	uint32_t is_calloc : 1;
+	uint32_t is_connected;
+	uint32_t belong_first; 
+	struct rte_mbuf *mbuf;
+	u_char *data;
+	struct fragment_ctx *next;
+};
+/*----------------------------------------------------------------------------*/
+// pxw
+//struct tcp_ring_buffer
+//{
+//	u_char* data;			/* buffered data */
+//	u_char* head;			/* pointer to the head */
+
+//	uint32_t head_offset;	/* offset for the head (head - data) */
+//	uint32_t tail_offset;	/* offset fot the last byte (null byte) */
+
+//	int merged_len;			/* contiguously merged length */ //连续合并的len
+//	uint64_t cum_len;		/* cummulatively merged length */ //累计合并len
+//	int last_len;			/* currently saved data length */
+//	int size;				/* total ring buffer size */
+	
+	/* TCP payload features */
+//	uint32_t head_seq;
+//	uint32_t init_seq;
+
+//	struct fragment_ctx* fctx;
+//};
 /*----------------------------------------------------------------------------*/
 struct tcp_ring_buffer
 {
@@ -46,8 +83,8 @@ struct tcp_ring_buffer
 	uint32_t head_offset;	/* offset for the head (head - data) */
 	uint32_t tail_offset;	/* offset fot the last byte (null byte) */
 
-	int merged_len;			/* contiguously merged length */
-	uint64_t cum_len;		/* cummulatively merged length */
+	int merged_len;			/* contiguously merged length */ //连续合并的len
+	uint64_t cum_len;		/* cummulatively merged length */ //累计合并len
 	int last_len;			/* currently saved data length */
 	int size;				/* total ring buffer size */
 	
@@ -75,10 +112,10 @@ uint32_t RBIsDanger(rb_manager_t rbm);
 /*----------------------------------------------------------------------------*/
 /* data manupulation functions */
 int RBPut(rb_manager_t rbm, struct tcp_ring_buffer* buff, 
-					void* data, uint32_t len , uint32_t seq);
+					void* data, uint32_t len , uint32_t seq, struct rte_mbuf *buf);
 size_t RBGet(rb_manager_t rbm, struct tcp_ring_buffer* buff, size_t len);
-size_t RBRemove(rb_manager_t rbm, struct tcp_ring_buffer* buff, 
-					size_t len, int option);
+//size_t RBRemove(rb_manager_t rbm, struct fragment_ctx* remove, int option);
+void RBRemove(rb_manager_t rbm, struct fragment_ctx* remove, int option);
 /*----------------------------------------------------------------------------*/
 
 #endif

@@ -60,11 +60,13 @@ typedef struct io_module_func {
 	void      (*release_pkt)(struct mtcp_thread_context *ctx, int ifidx, unsigned char *pkt_data, int len);
 	uint8_t * (*get_wptr)(struct mtcp_thread_context *ctx, int ifidx, uint16_t len);
 	int32_t   (*send_pkts)(struct mtcp_thread_context *ctx, int nif);
-	uint8_t * (*get_rptr)(struct mtcp_thread_context *ctx, int ifidx, int index, uint16_t *len);
+	uint8_t * (*get_rptr)(struct mtcp_thread_context *ctx, int ifidx, int index, uint16_t *len, struct rte_mbuf *buf);
 	int32_t   (*recv_pkts)(struct mtcp_thread_context *ctx, int ifidx);
 	int32_t	  (*select)(struct mtcp_thread_context *ctx);
 	void	  (*destroy_handle)(struct mtcp_thread_context *ctx);
 	int32_t	  (*dev_ioctl)(struct mtcp_thread_context *ctx, int nif, int cmd, void *argp);
+	// pxw
+	void      (*free_pkts)(struct rte_mbuf* buf); 
 } io_module_func __attribute__((aligned(__WORDSIZE)));
 /*----------------------------------------------------------------------------*/
 /* set I/O module context */

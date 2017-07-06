@@ -118,6 +118,8 @@ RaiseReadEvent(mtcp_manager_t mtcp, tcp_stream *stream)
 
 			AddEpollEvent(mtcp->ep, 
 					MTCP_EVENT_QUEUE, stream->socket, MTCP_EPOLLIN);
+
+
 #if BLOCKING_SUPPORT
 		} else if (!(stream->socket->opts & MTCP_NONBLOCK)) {
 			if (!stream->on_rcv_br_list) {
@@ -196,11 +198,12 @@ inline void
 RaiseErrorEvent(mtcp_manager_t mtcp, tcp_stream *stream)
 {
 	// pxw
+	/*
 	FILE *fp = fopen("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/stream.log", "a+");
 	fprintf (fp, "RaiseErrorEvent\n");
 	fflush (fp);
 	fclose (fp);
-
+	*/
 
 	if (stream->socket) {
 		if (stream->socket->epoll & MTCP_EPOLLERR) {
@@ -572,10 +575,12 @@ DumpStream(mtcp_manager_t mtcp, tcp_stream *stream)
 {
 
 	// pxw
+	/*
 	FILE *fp = fopen("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/stream.log", "a+");
 	fprintf (fp, "DumpStream\n");
 	fflush (fp);
 	fclose (fp);
+	*/
 
 	uint8_t *sa, *da;
 	struct tcp_send_vars *sndvar = stream->sndvar;

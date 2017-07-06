@@ -134,7 +134,7 @@ AMTAR = $${TAR-tar}
 AUTOCONF = ${SHELL} /home/dcslab/pxw/glusterfs-3.9.1/mtcp/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/dcslab/pxw/glusterfs-3.9.1/mtcp/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/dcslab/pxw/glusterfs-3.9.1/mtcp/missing --run automake-1.11
-AWK = gawk
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=none
 CFLAGS = -g -O2

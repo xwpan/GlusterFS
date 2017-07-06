@@ -7,7 +7,7 @@
 /*----------------------------------------------------------------------------*/
 int
 ProcessPacket(mtcp_manager_t mtcp, const int ifidx, 
-		uint32_t cur_ts, unsigned char *pkt_data, int len)
+		uint32_t cur_ts, unsigned char *pkt_data, int len, struct rte_mbuf *buf)
 {
 	// pxw
 //	FILE * fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/pkt-type", "a+");
@@ -37,7 +37,7 @@ ProcessPacket(mtcp_manager_t mtcp, const int ifidx,
 
 	if (ip_proto == ETH_P_IP) {
 		/* process ipv4 packet */
-		ret = ProcessIPv4Packet(mtcp, cur_ts, ifidx, pkt_data, len);
+		ret = ProcessIPv4Packet(mtcp, cur_ts, ifidx, pkt_data, len, buf);
 
 //		fprintf (fp, "ipv4 %d\n",ret);
 //		fflush (fp);
@@ -51,12 +51,9 @@ ProcessPacket(mtcp_manager_t mtcp, const int ifidx,
 		return TRUE;
 
 	} else {
-		//DumpPacket(mtcp, (char *)pkt_data, len, "??", ifidx);
+		// 这部分功能为空，放在recv pkt中
 		mtcp->iom->release_pkt(mtcp->ctx, ifidx, pkt_data, len);
 
-//		fprintf (fp, "other\n");
-//		fflush(fp);
-//		fclose (fp);
 		return TRUE;
 	}
 

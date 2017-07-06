@@ -17,7 +17,8 @@ MTCP_HDR = mtcp_api.h mtcp_epoll.h
 GCC=gcc
 
 ### FLAGS ###
-GCC_OPT = -m64 -Wall -fPIC -fgnu89-inline -Werror
+GCC_OPT = -m64 -Wall -fPIC -fgnu89-inline 
+#-Werror
 #DBG_OPT = -DDBGMSG -DDBGFUNC -DSTREAM -DSTATE -DTSTAT -DAPP -DEPOLL
 #DBG_OPT = -DDBGMSG -DDBGFUNC -DSTREAM -DSTATE
 #DBG_OPT += -DPKTDUMP

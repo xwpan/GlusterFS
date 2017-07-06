@@ -412,13 +412,13 @@ mtcp_socket(mctx_t mctx, int domain, int type, int protocol)
 
 /* sjpark
  */
-
+/*
 static void pr_ip(FILE *fp, char *pref, int addr)
 {
 	unsigned char *caddr = (unsigned char *)&addr;
 	fprintf(fp, "%s%d.%d.%d.%d\n", pref, caddr[0], caddr[1], caddr[2], caddr[3]);
 }
-
+*/
 
 /*----------------------------------------------------------------------------*/
 int 
@@ -577,7 +577,7 @@ int
 mtcp_accept(mctx_t mctx, int sockid, struct sockaddr *addr, socklen_t *addrlen)
 {
 	// pxw
-     FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_accept","a+");
+     //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_accept","a+");
 
 	mtcp_manager_t mtcp;
 	struct tcp_listener *listener;
@@ -671,11 +671,13 @@ mtcp_accept(mctx_t mctx, int sockid, struct sockaddr *addr, socklen_t *addrlen)
 		socket->saddr.sin_addr.s_addr = accepted->daddr;
 	}
 
+	/*
 	fprintf (fp, "port %d\n", accepted->dport);
 	pr_ip(fp, "the address: ", accepted->daddr);
 	fprintf (fp, "Stream sockid %d accepted\n", accepted->socket->id);
 	fclose (fp);
-	
+	*/
+
 	if (!(listener->socket->epoll & MTCP_EPOLLET) &&
 	    !StreamQueueIsEmpty(listener->acceptq))
 		AddEpollEvent(mtcp->ep, 
@@ -1161,6 +1163,8 @@ PeekForUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 	return copylen;
 }
 /*----------------------------------------------------------------------------*/
+// pxw ---old
+/*
 static inline int
 CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 {
@@ -1168,19 +1172,121 @@ CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 	uint32_t prev_rcv_wnd;
 	int copylen;
 
-	copylen = MIN(rcvvar->rcvbuf->merged_len, len);
+	copylen = MIN(rcvvar->rcvbuf->merged_len, len); //比较iovec的len 和 stream的rcvbuf当前merged_len的最小值，作为copylen，多余的作为remaining生成下一次触发事件
 	if (copylen <= 0) {
 		errno = EAGAIN;
 		return -1;
 	}
 
-	prev_rcv_wnd = rcvvar->rcv_wnd;
-	/* Copy data to user buffer and remove it from receiving buffer */
-	memcpy(buf, rcvvar->rcvbuf->head, copylen);
-	RBRemove(mtcp->rbm_rcv, rcvvar->rcvbuf, copylen, AT_APP);
-	rcvvar->rcv_wnd = rcvvar->rcvbuf->size - rcvvar->rcvbuf->merged_len;
+	// pxw
+        //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/CopyToUser","a+");
+	//fprintf(fp, "iovec len : %6d,   cur_stream : rcvbuf->merged_len : %6d, rcvbuf->size : %6d\n",
+	//		len, rcvvar->rcvbuf->merged_len, rcvvar->rcvbuf->size);
+	//fflush(fp);
+	//fclose(fp);
 
-	/* Advertise newly freed receive buffer */
+	prev_rcv_wnd = rcvvar->rcv_wnd;
+	// Copy data to user buffer and remove it from receiving buffer 
+	memcpy(buf, rcvvar->rcvbuf->head, copylen); //从rcvbuf->head开始，拷贝copylen长度的内容
+	RBRemove(mtcp->rbm_rcv, rcvvar->rcvbuf, copylen, AT_APP); //拷贝结束后，从rcvbuf中清除copylen长度
+
+	// pxw
+	// 修改后rcvbuf->size仅仅用来修改wnd
+	rcvvar->rcv_wnd = rcvvar->rcvbuf->size - rcvvar->rcvbuf->merged_len; //rcv window 剩余空间大小 = rcvbuf_size - merged_len = 8192 - merged_len
+
+	// Advertise newly freed receive buffer 
+	if (cur_stream->need_wnd_adv) {
+		if (rcvvar->rcv_wnd > cur_stream->sndvar->eff_mss) {
+			if (!cur_stream->sndvar->on_ackq) {
+				SQ_LOCK(&mtcp->ctx->ackq_lock);
+				cur_stream->sndvar->on_ackq = TRUE;
+				StreamEnqueue(mtcp->ackq, cur_stream); // this always success 
+				SQ_UNLOCK(&mtcp->ctx->ackq_lock);
+				cur_stream->need_wnd_adv = FALSE;
+				mtcp->wakeup_flag = TRUE;
+			}
+		}
+	}
+
+	UNUSED(prev_rcv_wnd);
+
+	return copylen;
+}
+*/
+
+static inline int
+CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
+{
+	struct tcp_recv_vars *rcvvar = cur_stream->rcvvar;
+	uint32_t prev_rcv_wnd;
+	int copylen, leftlen;
+	struct fragment_ctx * iter;
+	struct fragment_ctx * release;
+
+	copylen = MIN(rcvvar->rcvbuf->merged_len, len); //比较iovec的len 和 stream的rcvbuf当前merged_len的最小值，作为copylen，多余的作为remaining生成下一次触发事件
+	if (copylen <= 0) {
+		errno = EAGAIN;
+		return -1;
+	}
+
+	// pxw
+        //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/CopyToUser","a+");
+	//fprintf(fp, "iovec len : %6d,   cur_stream : rcvbuf->merged_len : %6d, rcvbuf->size : %6d\n",
+	//		len, rcvvar->rcvbuf->merged_len, rcvvar->rcvbuf->size);
+	//fflush(fp);
+	//fclose(fp);
+
+	prev_rcv_wnd = rcvvar->rcv_wnd;
+	// Copy data to user buffer and remove it from receiving buffer 
+	
+	// pxw
+	// 拷贝rcvbuf中的数据到buf中，如果有内容全部被拷贝的rte_mbuf调用free
+	//memcpy(buf, rcvvar->rcvbuf->head, copylen); //从rcvbuf->head开始，拷贝copylen长度的内容
+	//RBRemove(mtcp->rbm_rcv, rcvvar->rcvbuf, copylen, AT_APP); //拷贝结束后，从rcvbuf中清除copylen长度
+	leftlen = copylen;
+	iter = rcvvar->rcvbuf->fctx;
+	while (iter->belong_first == 1) {
+		if (leftlen < iter->len){  //从当前fragment中读取一部分
+			iter->seq += leftlen;
+			iter->len -= leftlen;
+			iter->data = iter->data + leftlen;
+			rcvvar->rcvbuf->merged_len -= leftlen;	
+			rcvvar->rcvbuf->head_seq = iter->seq;
+			break;
+
+		} else if (leftlen == iter->len) { //正好当前fragment全部读完
+			rcvvar->rcvbuf->fctx = iter->next;
+			rcvvar->rcvbuf->merged_len -= leftlen;
+			rcvvar->rcvbuf->head_seq = iter->next->seq;
+			//free this buf
+			free_pkts(iter->mbuf);
+			//remove this fragment
+			iter->is_calloc = 0;
+			release = iter;
+			iter = iter->next;
+			RBRemove(mtcp->rbm_rcv, release, AT_APP);
+			break;
+
+		} else { //当前fragment读完，还要从下一个fragment中继续读取
+			leftlen -= iter->len;
+			rcvvar->rcvbuf->fctx = iter->next;
+			rcvvar->rcvbuf->merged_len -= iter->len;
+			rcvvar->rcvbuf->head_seq = iter->next->seq;
+			//free this buf
+			free_pkts(iter->mbuf);
+			//remove the fragment
+			iter->is_calloc = 0;
+			release = iter;
+			iter = iter->next;
+			RBRemove(mtcp->rbm_rcv, release, AT_APP);
+			break;		
+		}
+	}	
+	// pxw
+	// 修改后rcvbuf->size仅仅用来修改wnd
+	rcvvar->rcv_wnd = rcvvar->rcvbuf->size - rcvvar->rcvbuf->merged_len; //rcv window 剩余空间大小 = rcvbuf_size - merged_len = 8192 - merged_len
+
+	// Advertise newly freed receive buffer 
 	if (cur_stream->need_wnd_adv) {
 		if (rcvvar->rcv_wnd > cur_stream->sndvar->eff_mss) {
 			if (!cur_stream->sndvar->on_ackq) {
@@ -1195,7 +1301,9 @@ CopyToUser(mtcp_manager_t mtcp, tcp_stream *cur_stream, char *buf, int len)
 	}
 
 	UNUSED(prev_rcv_wnd);
+
 	return copylen;
+
 }
 /*------------把mtcpmanager中的stream的rcvvar读到用户的buf中-----------*/
 ssize_t
@@ -1343,6 +1451,8 @@ mtcp_readv(mctx_t mctx, int sockid, const struct iovec *iov, int numIOV)
 	struct tcp_recv_vars *rcvvar;
 	int ret, bytes_read, i;
 	int event_remaining;
+	// pxw
+        //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_readv","a+");
 
 	mtcp = GetMTCPManager(mctx);
 	if (!mtcp) {
@@ -1397,7 +1507,11 @@ mtcp_readv(mctx_t mctx, int sockid, const struct iovec *iov, int numIOV)
 	}
 	
 	SBUF_LOCK(&rcvvar->read_lock);
-#if BLOCKING_SUPPORT
+	
+	// pxw
+	//fprintf (fp, "read_lock-----");
+
+#if BLOCKING_SUPPORT  // FALSE
 	if (!(socket->opts & MTCP_NONBLOCK)) {
 		while (rcvvar->rcvbuf->merged_len == 0) {
 			if (!cur_stream || cur_stream->state != TCP_ST_ESTABLISHED) {
@@ -1411,8 +1525,8 @@ mtcp_readv(mctx_t mctx, int sockid, const struct iovec *iov, int numIOV)
 #endif
 
 	/* read and store the contents to the vectored buffers */ 
-	bytes_read = 0;
-	for (i = 0; i < numIOV; i++) {
+	bytes_read = 0;  
+	for (i = 0; i < numIOV; i++) {    // numIOV = 1, 只执行一次copy
 		if (iov[i].iov_len <= 0)
 			continue;
 
@@ -1430,7 +1544,7 @@ mtcp_readv(mctx_t mctx, int sockid, const struct iovec *iov, int numIOV)
 	/* if there are remaining payload, generate read event */
 	/* (may due to insufficient user buffer) */
 	if (socket->epoll & MTCP_EPOLLIN) {
-		if (!(socket->epoll & MTCP_EPOLLET) && rcvvar->rcvbuf->merged_len > 0) {
+		if (!(socket->epoll & MTCP_EPOLLET) && rcvvar->rcvbuf->merged_len > 0) {  // 不是边缘触发，并且 merged_len > 0 ： 有剩余时间payload未读
 			event_remaining = TRUE;
 		}
 	}
@@ -1440,10 +1554,16 @@ mtcp_readv(mctx_t mctx, int sockid, const struct iovec *iov, int numIOV)
 		event_remaining = TRUE;
 	}
 
+	//fprintf (fp, "read_bytes : %8d, merged_len : %8d, event_remaining : %5d", ret, rcvvar->rcvbuf->merged_len, event_remaining);
+
 	SBUF_UNLOCK(&rcvvar->read_lock);
 
+	//fprintf (fp, "------ read_unlock\n");
+	//fflush(fp);
+	//fclose(fp);
+
 	if(event_remaining) {
-		if (socket->epoll & MTCP_EPOLLIN && !(socket->epoll & MTCP_EPOLLET)) {
+		if (socket->epoll & MTCP_EPOLLIN && !(socket->epoll & MTCP_EPOLLET)) { //如果有剩余，加入epollevent的 usr shadow event queue
 			AddEpollEvent(mtcp->ep, 
 					USR_SHADOW_EVENT_QUEUE, socket, MTCP_EPOLLIN);
 #if BLOCKING_SUPPORT

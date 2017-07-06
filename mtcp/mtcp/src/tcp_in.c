@@ -537,11 +537,16 @@ ProcessACK(mtcp_manager_t mtcp, tcp_stream *cur_stream, uint32_t cur_ts,
 /*----------------------------------------------------------------------------*/
 static inline int 
 ProcessTCPPayload(mtcp_manager_t mtcp, tcp_stream *cur_stream, 
-		uint32_t cur_ts, uint8_t *payload, uint32_t seq, int payloadlen)
+		uint32_t cur_ts, uint8_t *payload, uint32_t seq, int payloadlen, struct rte_mbuf *mbuf)  //增加了mbuf用于free
 {
 	struct tcp_recv_vars *rcvvar = cur_stream->rcvvar;
 	uint32_t prev_rcv_nxt;
 	int ret;
+	// pxw
+	struct fragment_ctx *iter;
+
+	// pxw
+        //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/TCPPayloadProcess", "a+");
 
 	/* if seq and segment length is lower than rcv_nxt, ignore and send ack */
 	if (TCP_SEQ_LT(seq + payloadlen, cur_stream->rcv_nxt)) {
@@ -553,8 +558,8 @@ ProcessTCPPayload(mtcp_manager_t mtcp, tcp_stream *cur_stream,
 	}
 
 	/* allocate receive buffer if not exist */
-	if (!rcvvar->rcvbuf) {
-		rcvvar->rcvbuf = RBInit(mtcp->rbm_rcv, rcvvar->irs + 1);
+	if (!rcvvar->rcvbuf) {  //理论上一直够用
+		rcvvar->rcvbuf = RBInit(mtcp->rbm_rcv, rcvvar->irs + 1); // RBInit() 函数分配一个buf块
 		if (!rcvvar->rcvbuf) {
 			TRACE_ERROR("Stream %d: Failed to allocate receive buffer.\n", 
 					cur_stream->id);
@@ -574,21 +579,33 @@ ProcessTCPPayload(mtcp_manager_t mtcp, tcp_stream *cur_stream,
 
 	prev_rcv_nxt = cur_stream->rcv_nxt;
 	ret = RBPut(mtcp->rbm_rcv, 
-			rcvvar->rcvbuf, payload, (uint32_t)payloadlen, seq);
+			rcvvar->rcvbuf, payload, (uint32_t)payloadlen, seq, mbuf);
 	if (ret < 0) {
 		TRACE_ERROR("Cannot merge payload. reason: %d\n", ret);
 	}
 
+	// pxw
+	//fprintf (fp, "payloadlen : %10d, RBPut ret : %d\n", payloadlen, ret);
+	//fflush(fp);
+        //fclose(fp);
+
 	/* discard the buffer if the state is FIN_WAIT_1 or FIN_WAIT_2, 
 	   meaning that the connection is already closed by the application */
+	// pxw
+	// 删除mtcp下面全部fragment_ctx以及rte_mbuf
 	if (cur_stream->state == TCP_ST_FIN_WAIT_1 || 
 			cur_stream->state == TCP_ST_FIN_WAIT_2) {
-		RBRemove(mtcp->rbm_rcv, 
-				rcvvar->rcvbuf, rcvvar->rcvbuf->merged_len, AT_MTCP);
+		//RBRemove(mtcp->rbm_rcv, rcvvar->rcvbuf, rcvvar->rcvbuf->merged_len, AT_MTCP);
+		for (iter = rcvvar->rcvbuf->fctx; iter->next != NULL; iter = iter->next) {
+			free_pkts(iter->mbuf);
+			RBRemove(mtcp->rbm_rcv, iter, AT_MTCP);
+		}
 	}
 	cur_stream->rcv_nxt = rcvvar->rcvbuf->head_seq + rcvvar->rcvbuf->merged_len;
+	
+	// pxw rcvbuf->size仅仅用来设置wnd窗口大小
 	rcvvar->rcv_wnd = rcvvar->rcvbuf->size - rcvvar->rcvbuf->merged_len;
-
+	
 	SBUF_UNLOCK(&rcvvar->read_lock);
 
 	if (TCP_SEQ_LEQ(cur_stream->rcv_nxt, prev_rcv_nxt)) {
@@ -685,7 +702,7 @@ CreateNewFlowHTEntry(mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr *i
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_LISTEN (mtcp_manager_t mtcp, uint32_t cur_ts, 
-		tcp_stream* cur_stream, struct tcphdr* tcph) {
+		tcp_stream* cur_stream, struct tcphdr* tcph, struct rte_mbuf * buf) {
 	
 	if (tcph->syn) {
 		if (cur_stream->state == TCP_ST_LISTEN)
@@ -697,6 +714,9 @@ Handle_TCP_ST_LISTEN (mtcp_manager_t mtcp, uint32_t cur_ts,
 		CTRACE_ERROR("Stream %d (TCP_ST_LISTEN): "
 				"Packet without SYN.\n", cur_stream->id);
 	}
+
+	// pxw
+	free_pkts(buf);
 
 }
 /*----------------------------------------------------------------------------*/
@@ -774,7 +794,7 @@ Handle_TCP_ST_SYN_SENT (mtcp_manager_t mtcp, uint32_t cur_ts,
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_SYN_RCVD (mtcp_manager_t mtcp, uint32_t cur_ts,
-		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t ack_seq) 
+		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t ack_seq, struct rte_mbuf* buf) 
 {
 	struct tcp_send_vars *sndvar = cur_stream->sndvar;
 	int ret;
@@ -823,7 +843,7 @@ Handle_TCP_ST_SYN_RCVD (mtcp_manager_t mtcp, uint32_t cur_ts,
 			AddtoTimeoutList(mtcp, cur_stream);
 
 		/* raise an event to the listening socket */
-		if (listener->socket && (listener->socket->epoll & MTCP_EPOLLIN)) {
+		if (listener->socket && (listener->socket->epoll & MTCP_EPOLLIN)) {   //触发listen socket的事件
 			AddEpollEvent(mtcp->ep, 
 					MTCP_EVENT_QUEUE, listener->socket, MTCP_EPOLLIN);
 		}
@@ -835,12 +855,15 @@ Handle_TCP_ST_SYN_RCVD (mtcp_manager_t mtcp, uint32_t cur_ts,
 		cur_stream->snd_nxt = sndvar->iss;
 		AddtoControlList(mtcp, cur_stream, cur_ts);
 	}
+
+	// pxw
+	free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_ESTABLISHED (mtcp_manager_t mtcp, uint32_t cur_ts,
 		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t seq, uint32_t ack_seq,
-		uint8_t *payload, int payloadlen, uint16_t window) 
+		uint8_t *payload, int payloadlen, uint16_t window, struct rte_mbuf* buf) 
 {
 	if (tcph->syn) {
 		TRACE_DBG("Stream %d (TCP_ST_ESTABLISHED): weird SYN. "
@@ -854,7 +877,7 @@ Handle_TCP_ST_ESTABLISHED (mtcp_manager_t mtcp, uint32_t cur_ts,
 
 	if (payloadlen > 0) {
 		if (ProcessTCPPayload(mtcp, cur_stream, 
-				cur_ts, payload, seq, payloadlen)) {
+				cur_ts, payload, seq, payloadlen, buf)) {
 			/* if return is TRUE, send ACK */
 			EnqueueACK(mtcp, cur_stream, cur_ts, ACK_OPT_AGGREGATE);
 		} else {
@@ -890,13 +913,15 @@ Handle_TCP_ST_ESTABLISHED (mtcp_manager_t mtcp, uint32_t cur_ts,
 static inline void 
 Handle_TCP_ST_CLOSE_WAIT (mtcp_manager_t mtcp, uint32_t cur_ts, 
 		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t seq, uint32_t ack_seq, 
-		int payloadlen, uint16_t window) 
+		int payloadlen, uint16_t window, struct rte_mbuf* buf) 
 {
 	if (TCP_SEQ_LT(seq, cur_stream->rcv_nxt)) {
 		TRACE_DBG("Stream %d (TCP_ST_CLOSE_WAIT): "
 				"weird seq: %u, expected: %u\n", 
 				cur_stream->id, seq, cur_stream->rcv_nxt);
 		AddtoControlList(mtcp, cur_stream, cur_ts);
+		// pxw
+		free_pkts(buf);
 		return;
 	}
 
@@ -904,18 +929,22 @@ Handle_TCP_ST_CLOSE_WAIT (mtcp_manager_t mtcp, uint32_t cur_ts,
 		ProcessACK(mtcp, cur_stream, cur_ts, 
 				tcph, seq, ack_seq, window, payloadlen);
 	}
+	// pxw
+	free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr *iph,
 		int ip_len, tcp_stream* cur_stream, struct tcphdr* tcph, 
-		uint32_t seq, uint32_t ack_seq, int payloadlen, uint16_t window) 
+		uint32_t seq, uint32_t ack_seq, int payloadlen, uint16_t window, struct rte_mbuf* buf) 
 {
 
 	if (TCP_SEQ_LT(seq, cur_stream->rcv_nxt)) {
 		TRACE_DBG("Stream %d (TCP_ST_LAST_ACK): "
 				"weird seq: %u, expected: %u\n", 
 				cur_stream->id, seq, cur_stream->rcv_nxt);
+		//pxw
+		free_pkts(buf);
 		return;
 	}
 
@@ -937,6 +966,8 @@ Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr
 			DumpStream(mtcp, cur_stream);
 			DumpControlList(mtcp, mtcp->n_sender[0]);
 #endif
+			//pxw
+			free_pkts(buf);
 			return;
 		}
 
@@ -962,12 +993,15 @@ Handle_TCP_ST_LAST_ACK (mtcp_manager_t mtcp, uint32_t cur_ts, const struct iphdr
 		//cur_stream->snd_nxt = cur_stream->sndvar->fss;
 		AddtoControlList(mtcp, cur_stream, cur_ts);
 	}
+
+	// pxw
+	free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t seq, uint32_t ack_seq, 
-		uint8_t *payload, int payloadlen, uint16_t window) 
+		uint8_t *payload, int payloadlen, uint16_t window, struct rte_mbuf *buf) 
 {
 
 	if (TCP_SEQ_LT(seq, cur_stream->rcv_nxt)) {
@@ -975,6 +1009,7 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 				"weird seq: %u, expected: %u\n", 
 				cur_stream->id, seq, cur_stream->rcv_nxt);
 		AddtoControlList(mtcp, cur_stream, cur_ts);
+		free_pkts(buf);
 		return;
 	}
 
@@ -1004,12 +1039,13 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	} else {
 		TRACE_DBG("Stream %d: does not contain an ack!\n", 
 				cur_stream->id);
+		free_pkts(buf);
 		return;
 	}
 
 	if (payloadlen > 0) {
 		if (ProcessTCPPayload(mtcp, cur_stream, 
-				cur_ts, payload, seq, payloadlen)) {
+				cur_ts, payload, seq, payloadlen, buf)) {
 			/* if return is TRUE, send ACK */
 			EnqueueACK(mtcp, cur_stream, cur_ts, ACK_OPT_AGGREGATE);
 		} else {
@@ -1035,12 +1071,15 @@ Handle_TCP_ST_FIN_WAIT_1 (mtcp_manager_t mtcp, uint32_t cur_ts,
 			AddtoControlList(mtcp, cur_stream, cur_ts);
 		}
 	}
+
+	// pxw
+	free_pkts(buf);
 }
 /*----------------------------------------------------------------------------*/
 static inline void 
 Handle_TCP_ST_FIN_WAIT_2 (mtcp_manager_t mtcp, uint32_t cur_ts,
 		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t seq, uint32_t ack_seq,
-		uint8_t *payload, int payloadlen, uint16_t window)
+		uint8_t *payload, int payloadlen, uint16_t window, struct rte_mbuf* buf)
 {
 	if (tcph->ack) {
 		if (cur_stream->sndvar->sndbuf) {
@@ -1050,12 +1089,13 @@ Handle_TCP_ST_FIN_WAIT_2 (mtcp_manager_t mtcp, uint32_t cur_ts,
 	} else {
 		TRACE_DBG("Stream %d: does not contain an ack!\n", 
 				cur_stream->id);
+		free_pkts(buf);
 		return;
 	}
 
 	if (payloadlen > 0) {
 		if (ProcessTCPPayload(mtcp, cur_stream, 
-				cur_ts, payload, seq, payloadlen)) {
+				cur_ts, payload, seq, payloadlen, buf)) {
 			/* if return is TRUE, send ACK */
 			EnqueueACK(mtcp, cur_stream, cur_ts, ACK_OPT_AGGREGATE);
 		} else {
@@ -1086,12 +1126,15 @@ Handle_TCP_ST_FIN_WAIT_2 (mtcp_manager_t mtcp, uint32_t cur_ts,
 #endif
 	}
 
+	// pxw
+	free_pkts(buf);
+
 }
 /*----------------------------------------------------------------------------*/
 static inline void
 Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts, 
 		tcp_stream* cur_stream, struct tcphdr* tcph, uint32_t seq, uint32_t ack_seq,
-		int payloadlen, uint16_t window) {
+		int payloadlen, uint16_t window, struct rte_mbuf* buf) {
 
 	if (tcph->ack) {
 		if (cur_stream->sndvar->sndbuf) {
@@ -1102,6 +1145,7 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 		if (!cur_stream->sndvar->is_fin_sent) {
 			TRACE_DBG("Stream %d (TCP_ST_CLOSING): "
 					"No FIN sent yet.\n", cur_stream->id);
+			free_pkts(buf);
 			return;
 		}
 
@@ -1117,6 +1161,7 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 #endif
 			//assert(0);
 			/* if the packet is not the ACK of FIN, ignore */
+			free_pkts(buf);
 			return;
 		}
 		
@@ -1129,16 +1174,20 @@ Handle_TCP_ST_CLOSING (mtcp_manager_t mtcp, uint32_t cur_ts,
 		
 		AddtoTimewaitList(mtcp, cur_stream, cur_ts);
 
+		// pxw
+		free_pkts(buf);
+
 	} else {
 		CTRACE_ERROR("Stream %d (TCP_ST_CLOSING): Not ACK\n", 
 				cur_stream->id);
+		free_pkts(buf);
 		return;
 	}
 }
 /*----------------------------------------------------------------------------*/
 int
 ProcessTCPPacket(mtcp_manager_t mtcp, 
-		 uint32_t cur_ts, const int ifidx, const struct iphdr *iph, int ip_len)
+		 uint32_t cur_ts, const int ifidx, const struct iphdr *iph, int ip_len, struct rte_mbuf* buf)
 {
 	struct tcphdr* tcph = (struct tcphdr *) ((u_char *)iph + (iph->ihl << 2));
 	uint8_t *payload    = (uint8_t *)tcph + (tcph->doff << 2);
@@ -1153,8 +1202,11 @@ ProcessTCPPacket(mtcp_manager_t mtcp,
 	int rc = -1;
 
 	//pxw
-	//FILE * fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/ProcessTCPPacket", "a+");
-	
+         //FILE * fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/ProcessTCPPacket", "a+");
+//	 fprintf (fp, "TCP packet payloadlen : %d\n", payloadlen);
+//	 fflush(fp);
+//	 fclose(fp);
+
 	/* Check ip packet invalidation */	
 	if (ip_len < ((iph->ihl + tcph->doff) << 2))
 		return ERROR;
@@ -1188,12 +1240,6 @@ ProcessTCPPacket(mtcp_manager_t mtcp,
 	s_stream.daddr = iph->saddr;
 	s_stream.dport = tcph->source;
 
-	/*
-	fprintf (fp, "dest: %"PRIu32":%"PRIu16",source: %"PRIu32":%"PRIu16"\n", 
-			 s_stream.saddr, s_stream.sport,
-			 s_stream.daddr, s_stream.dport);
-    fflush (fp);
-	*/
 
 	if (!(cur_stream = StreamHTSearch(mtcp->tcp_flow_table, &s_stream))) {
 		/* not found in flow table */
@@ -1224,8 +1270,6 @@ ProcessTCPPacket(mtcp_manager_t mtcp,
 			return TRUE;
 		}
 
-	//	fprintf (fp, "validate sequence\n");
-	//	fflush (fp);
 	}
 
 	/* Update receive window size */
@@ -1249,77 +1293,64 @@ ProcessTCPPacket(mtcp_manager_t mtcp,
 		}
 	}
 
+	 //pxw
+	// unsigned char * addr = (unsigned char *)&s_stream.daddr;
+	 //fprintf (fp, "TCP packet payloadlen : %5d, source addr : %d.%d.%d.%d, seq : %15u, ack_seq : %15u, SYN : %d, ACK : %d, FIN : %d, window : %d\n", 
+	//		 payloadlen, addr[0], addr[1], addr[2], addr[3], seq, ack_seq, tcph->syn, tcph->ack, tcph->fin, window);
+	// fflush(fp);
+	// fclose(fp);
+
 	//状态机
 	//（服务端）对新接收到的连接请求，stream的state依次从TCP_ST_LISTEN到TCP_ST_ESTABLISHED,
 	//把事件加入AddEpollEvent
 	switch (cur_stream->state) { 
 	case TCP_ST_LISTEN:
-		Handle_TCP_ST_LISTEN(mtcp, cur_ts, cur_stream, tcph);
-	//	fprintf (fp, "Handle_TCP_ST_LISTEN invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_LISTEN(mtcp, cur_ts, cur_stream, tcph, buf);  //可以释放mbuf
 		break;
 
 	case TCP_ST_SYN_SENT:
-		Handle_TCP_ST_SYN_SENT(mtcp, cur_ts, cur_stream, iph, tcph, 
+		Handle_TCP_ST_SYN_SENT(mtcp, cur_ts, cur_stream, iph, tcph,  // ! send---额外处理 !
 				seq, ack_seq, payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_SYN_SENT invoked\n");
-	//	fflush (fp);
-
 		break;
 
 	case TCP_ST_SYN_RCVD:
 		/* SYN retransmit implies our SYN/ACK was lost. Resend */
 		if (tcph->syn && seq == cur_stream->rcvvar->irs) {
-			Handle_TCP_ST_LISTEN(mtcp, cur_ts, cur_stream, tcph);
-	//		fprintf (fp, "Handle_TCP_ST_LISTEN invoked\n");
-	//		fflush (fp);
+			Handle_TCP_ST_LISTEN(mtcp, cur_ts, cur_stream, tcph, buf); //可以释放mbuf
+
 		} else {
-			Handle_TCP_ST_SYN_RCVD(mtcp, cur_ts, cur_stream, tcph, ack_seq);
-	//		fprintf (fp, "Handle_TCP_ST_SYN_RCVD\n");
-	//		fflush (fp);
+			Handle_TCP_ST_SYN_RCVD(mtcp, cur_ts, cur_stream, tcph, ack_seq, buf); //可以释放mbuf,free_pkts()释放整个一轮收到的包，或者单独调用rte_pktmbuf_free() 释放某个包
 		}
 		break;
 
 	case TCP_ST_ESTABLISHED:
 		Handle_TCP_ST_ESTABLISHED(mtcp, cur_ts, cur_stream, tcph, 
-				seq, ack_seq, payload, payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_ESTABLISHED invoked\n");
-	//	fflush (fp);
+				seq, ack_seq, payload, payloadlen, window, buf); //增加buf项
 		break;
 
 	case TCP_ST_CLOSE_WAIT:
-		Handle_TCP_ST_CLOSE_WAIT(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq,
-				payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_CLOSE_WAIT invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_CLOSE_WAIT(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq, //可释放mbuf
+				payloadlen, window, buf);
 		break;
 
 	case TCP_ST_LAST_ACK:
-		Handle_TCP_ST_LAST_ACK(mtcp, cur_ts, iph, ip_len, cur_stream, tcph, 
-				seq, ack_seq, payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_LAST_ACK invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_LAST_ACK(mtcp, cur_ts, iph, ip_len, cur_stream, tcph,  //可释放mbuf 
+				seq, ack_seq, payloadlen, window, buf);
 		break;
 	
 	case TCP_ST_FIN_WAIT_1:
-		Handle_TCP_ST_FIN_WAIT_1(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq,
-				payload, payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_FIN_WAIT_1 invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_FIN_WAIT_1(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq, //ProcessTCPPayload...
+				payload, payloadlen, window, buf);
 		break;
 
 	case TCP_ST_FIN_WAIT_2:
-		Handle_TCP_ST_FIN_WAIT_2(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq, 
-				payload, payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_FIN_WAIT_2 invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_FIN_WAIT_2(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq, //ProcessTCPPayload....
+				payload, payloadlen, window, buf);
 		break;
 
 	case TCP_ST_CLOSING:
-		Handle_TCP_ST_CLOSING(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq,
-				payloadlen, window);
-	//	fprintf (fp, "Handle_TCP_ST_CLOSING invoked\n");
-	//	fflush (fp);
+		Handle_TCP_ST_CLOSING(mtcp, cur_ts, cur_stream, tcph, seq, ack_seq,  //rcvvar->rto list...
+				payloadlen, window, buf);
 		break;
 
 	case TCP_ST_TIME_WAIT:
@@ -1329,19 +1360,15 @@ ProcessTCPPacket(mtcp_manager_t mtcp,
 			RemoveFromTimewaitList(mtcp, cur_stream);
 			AddtoTimewaitList(mtcp, cur_stream, cur_ts);
 		}
+
 		AddtoControlList(mtcp, cur_stream, cur_ts);
-	//	fprintf (fp, " TCP_ST_TIME_WAIT\n");
-	//	fflush (fp);
 		break;
 
 	case TCP_ST_CLOSED:
-	//	fprintf (fp, "TCP_ST_CLOSED\n");
-	//	fflush (fp);
 		break;
 
 	}
 	
-	//fclose (fp);
 
 	return TRUE;
 }

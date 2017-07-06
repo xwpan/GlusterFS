@@ -334,10 +334,8 @@ mtcp_epoll_wait(mctx_t mctx, int epid,
 		struct mtcp_epoll_event *events, int maxevents, int timeout)
 {
 	// pxw
-//	FILE *fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/log_mtcp", "a+");
+	//FILE *fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/mtcp_epoll_wait_epolllock", "a+");
 		
-//	fprintf (fp, "mtcp_epoll_wait\n");
-
 	mtcp_manager_t mtcp;
 	struct mtcp_epoll *ep;
 	struct event_queue *eq;
@@ -350,7 +348,6 @@ mtcp_epoll_wait(mctx_t mctx, int epid,
 
 	mtcp = GetMTCPManager(mctx);
 	if (!mtcp) {
-	//	fprintf (fp, "failed to get mtcp manager\n");
 		return -1;
 	}
 
@@ -361,20 +358,17 @@ mtcp_epoll_wait(mctx_t mctx, int epid,
 	}
 
 	if (mtcp->smap[epid].socktype == MTCP_SOCK_UNUSED) {
-	//	fprintf (fp, "aaa\n");
 		errno = EBADF;
 		return -1;
 	}
 
 	if (mtcp->smap[epid].socktype != MTCP_SOCK_EPOLL) {
-	//	fprintf (fp, "bbb\n");
 		errno = EINVAL;
 		return -1;
 	}
 
 	ep = mtcp->smap[epid].ep;
 	if (!ep || !events || maxevents <= 0) {
-	//	fprintf (fp, "ccc\n");
 		errno = EINVAL;
 		return -1;
 	}
@@ -389,13 +383,18 @@ mtcp_epoll_wait(mctx_t mctx, int epid,
 	} 
 #endif /* SPIN_BEFORE_SLEEP */
 
+//old ep lock
+/*	
 	if (pthread_mutex_lock(&ep->epoll_lock)) {
 		if (errno == EDEADLK) {
-	//	    fprintf (fp, "DEADLOCK\n");
 			perror("mtcp_epoll_wait: epoll_lock blocked\n");
 		}
 		assert(0);
 	}
+*/	
+
+	//fprintf(fp, "epoll lock\n");
+	//fflush (fp);
 
 wait:
 	eq = ep->usr_queue;
@@ -436,6 +435,7 @@ wait:
 
 			//deadline.tv_sec = mtcp->cur_tv.tv_sec;
 			//deadline.tv_nsec = (mtcp->cur_tv.tv_usec + timeout * 1000) * 1000;
+
 			ret = pthread_cond_timedwait(&ep->epoll_cond, &ep->epoll_lock, &deadline);
 			if (ret && ret != ETIMEDOUT) {
 				/* errno set by pthread_cond_timedwait() */
@@ -446,8 +446,11 @@ wait:
 			}
 			timeout = 0;
 		} else if (timeout < 0) { //pxw ----------------timeout设置成-1
-    //		fprintf (fp, "app thread is going to cond_wait\n");
-	//		fflush(fp);
+			//fprintf (fp, "epoll cond wait and unlock\n");
+			//fflush (fp);
+
+		        pthread_mutex_lock(&ep->epoll_lock);  // new ep lock
+
 			ret = pthread_cond_wait(&ep->epoll_cond, &ep->epoll_lock); //释放锁，等待mtcp唤醒
 			//条件等待设置失败:
 			if (ret) {
@@ -457,6 +460,7 @@ wait:
 						ret, strerror(errno));
 				return -1;
 			}
+			pthread_mutex_unlock(&ep->epoll_lock);
 		}
 
 		//app thread被唤醒后：
@@ -477,8 +481,11 @@ wait:
 	}
 
 	//线程准备获取事件：
-//	fprintf(fp, "app thread got events\n");
-//	fflush(fp);
+	
+	// pxw	
+	//fprintf (fp, "epoll awake, usr queue : %5d ,  usr shadow queue : %5d\n", eq->num_events, ep->usr_shadow_queue->num_events);
+	//fflush (fp);
+
 
 	/* fetch events from the user event queue */
 	cnt = 0;
@@ -497,17 +504,14 @@ wait:
 			events[cnt++] = eq->events[eq->start].ev;  // copy
 			assert(eq->events[eq->start].sockid >= 0);
 		    // pxw
-//			fprintf (fp, "event_socket = %d\n", eq->events[eq->start].ev.data.sockid); //mtcp_epoll_data中sockid是无穷大/小的数
-//			fflush (fp);
-/*
-			fprintf (fp, "Socket %d: Handled event. event: %s, "
+/*			fprintf (fp, "Socket %d: Handled event. event: %s, "
 					"start: %u, end: %u, num: %u\n", 
 					event_socket->id, 
 					EventToString(eq->events[eq->start].ev.events), 
 					eq->start, eq->end, eq->num_events);
 			fflush (fp);
-*/
 
+*/
 			TRACE_EPOLL("Socket %d: Handled event. event: %s, "
 					"start: %u, end: %u, num: %u\n", 
 					event_socket->id, 
@@ -576,10 +580,12 @@ wait:
 	if (cnt == 0 && timeout != 0)
 		goto wait;
 
-	pthread_mutex_unlock(&ep->epoll_lock);
-
-	// pxw
-//	fclose (fp);
+//old ep lock
+	//pthread_mutex_unlock(&ep->epoll_lock);
+	
+	//fprintf(fp, "epoll unlock\n");
+	//fflush (fp);
+	//fclose(fp);
 
 	return cnt;
 }
@@ -588,7 +594,7 @@ inline int
 AddEpollEvent(struct mtcp_epoll *ep, 
 		int queue_type, socket_map_t socket, uint32_t event)
 {
-	//FILE *fp = fopen ("/home/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/AddEpollEvent", "a+");
+	//FILE *fp = fopen ("/home/dcslab/pxw/glusterfs-3.9.1/rpc/rpc-transport/dpdk/AddEpollEvent_epolllock", "a+");
 	//fprintf (fp, "AddEpollEvent\n");
 
 	struct event_queue *eq;
@@ -610,6 +616,11 @@ AddEpollEvent(struct mtcp_epoll *ep,
 		eq = ep->usr_queue;
 		//fprintf (fp, "usr_queue\n");
 		pthread_mutex_lock(&ep->epoll_lock);
+
+		// pxw
+		//fprintf(fp, "epoll lock\n");
+		//fflush (fp);
+
 	} else if (queue_type == USR_SHADOW_EVENT_QUEUE) {
 		eq = ep->usr_shadow_queue;
 		//fprintf (fp, "usr_shadow_queue\n");
@@ -621,8 +632,14 @@ AddEpollEvent(struct mtcp_epoll *ep,
 	if (eq->num_events >= eq->size) {
 		TRACE_ERROR("Exceeded epoll event queue! num_events: %d, size: %d\n", 
 				eq->num_events, eq->size);
-		if (queue_type == USR_EVENT_QUEUE)
+		if (queue_type == USR_EVENT_QUEUE) {
 			pthread_mutex_unlock(&ep->epoll_lock);
+			// pxw
+			//fprintf(fp, "epoll unlock\n");
+			//fflush (fp);
+			//fclose (fp);
+
+		}
 		return -1;
 	}
 
@@ -633,15 +650,20 @@ AddEpollEvent(struct mtcp_epoll *ep,
 	eq->events[index].ev.events = event;
 	eq->events[index].ev.data = socket->ep_data; //data里的sockid是？
 
-	//fprintf (fp, "eq->events.sockid = %d, eq->events.ev.events = %d, eq->events.ev.data.sockid = %d\n",
-	//			socket->id, event, socket->ep_data.sockid);
-	//fflush (fp);
-	//fclose (fp);
-
 	if (eq->end >= eq->size) {
 		eq->end = 0;
 	}
 	eq->num_events++;
+
+	// pxw
+
+	/*
+	fprintf (fp, "sockid = %d, eq->events.ev.events = %s, current queued event number = %d\n",
+				socket->id, EventToString(event), eq->num_events);
+	fflush (fp);
+	fclose (fp);
+	*/
+
 
 #if 0
 	TRACE_EPOLL("Socket %d New event: %s, start: %u, end: %u, num: %u\n",
@@ -650,10 +672,14 @@ AddEpollEvent(struct mtcp_epoll *ep,
 			ep->start, ep->end, ep->num_events);
 #endif
 
-	if (queue_type == USR_EVENT_QUEUE)
+	if (queue_type == USR_EVENT_QUEUE) {
 		pthread_mutex_unlock(&ep->epoll_lock);
-
+		// pxw
+		//fprintf(fp, "epoll unlock\n");
+		//fflush (fp);
+	}
 	ep->stat.registered++;
-
+        
+	//fclose(fp);
 	return 0;
 }

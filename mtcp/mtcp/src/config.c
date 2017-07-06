@@ -126,7 +126,7 @@ EnrollRouteTableEntry(char *optstr)
 		}
 	}
 
-	ridx = CONFIG.routes++;
+	ridx = CONFIG.routes++;//ridx从1开始，default用了0
 	CONFIG.rtable[ridx].daddr = inet_addr(daddr_s);
 	CONFIG.rtable[ridx].prefix = mystrtol(prefix, 10);
 	if (CONFIG.rtable[ridx].prefix > 32 || CONFIG.rtable[ridx].prefix < 0) {
@@ -184,12 +184,12 @@ SetRoutingTableFromFile()
 			*iscomment = 0;
 
 		if (!strncmp(optstr, ROUTES, sizeof(ROUTES) - 1)) {
-			num = GetIntValue(optstr + sizeof(ROUTES));
+			num = GetIntValue(optstr + sizeof(ROUTES));  //num是路由表上项目个数
 			if (num <= 0)
 				break;
 
 			for (i = 0; i < num; i++) {
-				if (fgets(optstr, MAX_OPTLINE_LEN, fc) == NULL)
+				if (fgets(optstr, MAX_OPTLINE_LEN, fc) == NULL) //把某一行项目存入opstr
 					break;
 
 				if (*optstr == '#') {
@@ -295,7 +295,7 @@ SetRoutingTable()
 	/* set default routing table */
 	for (i = 0; i < CONFIG.eths_num; i ++) {
 		
-		ridx = CONFIG.routes++;
+		ridx = CONFIG.routes++; //set default route table [0]
 		CONFIG.rtable[ridx].daddr = CONFIG.eths[i].ip_addr & CONFIG.eths[i].netmask;
 		
 		CONFIG.rtable[ridx].prefix = 0;
